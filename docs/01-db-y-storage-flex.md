@@ -412,12 +412,12 @@ begin
   --
   -- new.id → el UUID del nuevo usuario
   -- new.raw_user_meta_data → una columna JSON de auth.users con datos extra del usuario
-  -- ->>'full_name' → extrae el campo 'full_name' de ese JSON como texto
+  -- ->>'nombre' → extrae el campo 'nombre' de ese JSON como texto
   --
-  -- Si el usuario se registró sin proporcionar nombre, raw_user_meta_data->>'full_name'
+  -- Si el usuario se registró sin proporcionar nombre, raw_user_meta_data->>'nombre'
   -- devolverá null, y 'nombre' quedará null (lo permitimos, sin not null en esa columna).
   insert into public.perfiles (id, nombre)
-  values (new.id, new.raw_user_meta_data->>'full_name');
+  values (new.id, new.raw_user_meta_data->>'nombre');
 
   -- Las funciones de trigger deben devolver algo. En triggers AFTER INSERT,
   -- devolver 'new' es la convención estándar (aunque aquí no tiene efecto real).

@@ -1,5 +1,6 @@
 import './globals.css'
 import Shell from '@/components/Shell'
+import IniciarSesion from './IniciarSesion'
 
 export const metadata = {
   title: 'Flex — Live Sessions',
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <IniciarSesion />
         <Shell>{children}</Shell>
       </body>
     </html>
