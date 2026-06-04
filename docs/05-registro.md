@@ -808,6 +808,40 @@ IniciarSesion (layout)
         └── rol = 'admin'    → ve todo
 ```
 
+### Implementación actual del diagrama
+
+- `src/app/IniciarSesion.jsx`
+  - crea el cliente con `createBrowserClient`
+  - llama `supabase.auth.getSession()`
+  - si hay sesión, carga `rol` desde `perfiles` y actualiza el store
+  - escucha cambios de sesión con `supabase.auth.onAuthStateChange`
+
+- `src/components/Shell.jsx`
+  - si la ruta es `/login` o `/register`: renderiza el contenido público
+  - si `cargando || !usuario`: devuelve `null` para evitar flashes
+  - si el usuario no está logueado y la ruta es privada: redirige a `/login`
+  - si el usuario está logueado y visita una ruta no permitida por su rol: redirige a la ruta por rol
+
+- `src/components/Sidebar.jsx`
+  - lee `rol` desde `useSesionStore()`
+  - filtra los items de navegación por `roles` permitidos
+  - muestra solo los enlaces que puede ver el usuario actual
+
+- `src/app/login/page.jsx`
+  - tras login obtiene el rol desde `perfiles`
+  - redirige según `RUTA_POR_ROL[rol]`
+
+- `src/app/register/page.jsx`
+  - tras registro redirige a `/login?registered=1`
+  - el login muestra un aviso de cuenta creada
+
+### Rutas permitidas por rol en la implementación actual
+
+- cliente: `/`, `/vip`, `/mi-area`, `/perfil`
+- staff: `/staff`, `/perfil`
+- portero: `/porteros`, `/perfil`
+- admin: todas las rutas
+
 ---
 
 ## 8. Proteger rutas en el servidor (opcional pero recomendado)

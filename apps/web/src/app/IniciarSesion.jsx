@@ -18,31 +18,51 @@ export default function IniciarSesion() {
   const { setSesion, limpiarSesion } = useSesionStore()
 
   useEffect(() => {
-    const supabase = createClient()
+    let subscription
 
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      if (!session) {
-        limpiarSesion()
-        return
-      }
+    try {
+      const supabase = createClient()
 
-      const rol = await obtenerRol(supabase, session.user.id)
-      setSesion(session.user, rol)
-    })
+      supabase.auth
+        .getSession()
+        .then(async ({ data: { session } }) => {
+          if (!session) {
+            limpiarSesion()
+            return
+          }
 
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_evento, session) => {
-      if (!session) {
-        limpiarSesion()
-        return
-      }
+          const rol = await obtenerRol(supabase, session.user.id)
+          setSesion(session.user, rol)
+        })
+        .catch(() => {
+          // Si Supabase falla (p. ej. emulador local caído), desbloqueamos
+          // el Shell para que pueda redirigir a /login en lugar de quedar
+          // cargando eternamente.
+          limpiarSesion()
+        })
 
-      const rol = await obtenerRol(supabase, session.user.id)
-      setSesion(session.user, rol)
-    })
+      const { data } = supabase.auth.onAuthStateChange(async (_evento, session) => {
+        if (!session) {
+          limpiarSesion()
+          return
+        }
 
-    return () => subscription.unsubscribe()
+        try {
+          const rol = await obtenerRol(supabase, session.user.id)
+          setSesion(session.user, rol)
+        } catch {
+          limpiarSesion()
+        }
+      })
+
+      subscription = data.subscription
+    } catch {
+      // Si ni siquiera createClient() es capaz de inicializarse, salimos
+      // de cargando para que el Shell redirija a /login.
+      limpiarSesion()
+    }
+
+    return () => subscription?.unsubscribe()
   }, [limpiarSesion, setSesion])
 
   return null

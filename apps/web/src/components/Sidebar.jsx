@@ -8,17 +8,22 @@ import {
   ShieldCheck, QrCode, LayoutDashboard, X,
   Camera, Lock, Bell, Shield, LogOut, CheckCircle, ChevronUp,
 } from 'lucide-react'
+import { useSesionStore } from '@/store/sesionStore'
 
 const NAV_CLIENTE = [
-  { icon: ShoppingCart, label: 'Pedir',     href: '/' },
-  { icon: Crown,        label: 'Salas VIP', href: '/vip' },
-  { icon: User,         label: 'Mi área',   href: '/mi-area' },
+  { icon: ShoppingCart, label: 'Pedir',     href: '/',        roles: ['cliente', 'admin'] },
+  { icon: Crown,        label: 'Salas VIP', href: '/vip',     roles: ['cliente', 'admin'] },
+  { icon: User,         label: 'Mi área',   href: '/mi-area', roles: ['cliente', 'admin'] },
 ]
 
-const NAV_STAFF = [
-  { icon: ShieldCheck,     label: 'Panel Staff', href: '/staff' },
-  { icon: QrCode,          label: 'Porteros',    href: '/porteros' },
-  { icon: LayoutDashboard, label: 'Admin',       href: '/admin' },
+const NAV_GENERAL = [
+  { icon: User,         label: 'Perfil',    href: '/perfil',  roles: ['cliente', 'staff', 'portero', 'admin'] },
+]
+
+const NAV_GESTION = [
+  { icon: ShieldCheck,     label: 'Panel Staff', href: '/staff',    roles: ['staff', 'admin'] },
+  { icon: QrCode,          label: 'Porteros',    href: '/porteros', roles: ['portero', 'admin'] },
+  { icon: LayoutDashboard, label: 'Admin',       href: '/admin',    roles: ['admin'] },
 ]
 
 const TABS_PERFIL = [
@@ -271,6 +276,10 @@ function ModalPerfil({ onClose }) {
 
 export default function Sidebar({ onClose }) {
   const pathname = usePathname()
+  const { rol } = useSesionStore()
+  const clienteItems = NAV_CLIENTE.filter(i => i.roles.includes(rol ?? 'cliente'))
+  const gestionItems = NAV_GESTION.filter(i => i.roles.includes(rol ?? 'cliente'))
+  const generalItems = NAV_GENERAL.filter(i => i.roles.includes(rol ?? 'cliente'))
 
   return (
     <aside className="w-64 h-full bg-zinc-900 border-r border-zinc-800 flex flex-col">
@@ -284,8 +293,15 @@ export default function Sidebar({ onClose }) {
         </div>
 
         <nav className="flex-1 py-4 px-3 space-y-4 overflow-y-auto">
-          <NavGroup title="Cliente" items={NAV_CLIENTE} pathname={pathname} onClose={onClose} />
-          <NavGroup title="Gestión" items={NAV_STAFF}   pathname={pathname} onClose={onClose} />
+          {clienteItems.length > 0 && (
+            <NavGroup title="Cliente" items={clienteItems} pathname={pathname} onClose={onClose} />
+          )}
+          {gestionItems.length > 0 && (
+            <NavGroup title="Gestión" items={gestionItems} pathname={pathname} onClose={onClose} />
+          )}
+          {generalItems.length > 0 && (
+            <NavGroup title="Cuenta" items={generalItems} pathname={pathname} onClose={onClose} />
+          )}
         </nav>
 
         {/* Avatar — navega a perfil */}

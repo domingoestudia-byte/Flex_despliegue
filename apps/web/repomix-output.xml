@@ -1,0 +1,2972 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+AGENTS.md
+CLAUDE.md
+eslint.config.mjs
+jsconfig.json
+next.config.mjs
+package.json
+postcss.config.mjs
+public/file.svg
+public/globe.svg
+public/next.svg
+public/vercel.svg
+public/window.svg
+README.md
+src/app/admin/page.jsx
+src/app/favicon.ico
+src/app/globals.css
+src/app/IniciarSesion.jsx
+src/app/layout.jsx
+src/app/login/page.jsx
+src/app/mi-area/page.jsx
+src/app/page.jsx
+src/app/perfil/page.jsx
+src/app/porteros/page.jsx
+src/app/register/page.jsx
+src/app/staff/page.jsx
+src/app/vip/page.jsx
+src/components/FlexLogo.jsx
+src/components/Shell.jsx
+src/components/Sidebar.jsx
+src/lib/supabase/client.js
+src/lib/supabase/server.js
+src/store/carritoStore.js
+src/store/reservasStore.js
+src/store/sesionStore.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+</file>
+
+<file path="AGENTS.md">
+<!-- BEGIN:nextjs-agent-rules -->
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+<!-- END:nextjs-agent-rules -->
+</file>
+
+<file path="CLAUDE.md">
+@AGENTS.md
+</file>
+
+<file path="eslint.config.mjs">
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+</file>
+
+<file path="jsconfig.json">
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+</file>
+
+<file path="next.config.mjs">
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  /* config options here */
+};
+
+export default nextConfig;
+</file>
+
+<file path="package.json">
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.10.3",
+    "@supabase/supabase-js": "^2.106.2",
+    "lucide-react": "^1.16.0",
+    "next": "16.2.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "zustand": "^5.0.13"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4"
+  }
+}
+</file>
+
+<file path="postcss.config.mjs">
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+</file>
+
+<file path="public/file.svg">
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
+</file>
+
+<file path="public/globe.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+</file>
+
+<file path="public/next.svg">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
+</file>
+
+<file path="public/vercel.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+</file>
+
+<file path="public/window.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+</file>
+
+<file path="README.md">
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</file>
+
+<file path="src/app/admin/page.jsx">
+'use client'
+
+import { useState } from 'react'
+import { Plus, Trash2, Edit2 } from 'lucide-react'
+
+const USUARIOS_INIT = [
+  { id: 1, nombre: 'Alex García',    email: 'alex@flex.es',    rol: 'Cliente', activo: true  },
+  { id: 2, nombre: 'Sara Martín',    email: 'sara@flex.es',    rol: 'Staff',   activo: true  },
+  { id: 3, nombre: 'Carlos Ruiz',    email: 'carlos@flex.es',  rol: 'Portero', activo: true  },
+  { id: 4, nombre: 'Laura Pérez',    email: 'laura@flex.es',   rol: 'Cliente', activo: false },
+]
+
+const PRODUCTOS_INIT = [
+  { id: 1, nombre: 'Cerveza Artesana',   categoria: 'Bebida', precio: 4.5,  activo: true  },
+  { id: 2, nombre: 'Gin Tonic Premium',  categoria: 'Bebida', precio: 9.0,  activo: true  },
+  { id: 3, nombre: 'Nachos con guacamole',categoria:'Comida', precio: 7.0,  activo: true  },
+  { id: 4, nombre: 'Hamburguesa Flex',   categoria: 'Comida', precio: 11.0, activo: false },
+]
+
+const TABS = ['Usuarios', 'Productos']
+
+const ROL_COLOR = {
+  Cliente: 'bg-blue-500/20 text-blue-400',
+  Staff:   'bg-amber-500/20 text-amber-400',
+  Portero: 'bg-purple-500/20 text-purple-400',
+  Admin:   'bg-red-500/20 text-red-400',
+}
+
+export default function PaginaAdmin() {
+  const [tab, setTab] = useState('Usuarios')
+  const [usuarios, setUsuarios] = useState(USUARIOS_INIT)
+  const [productos, setProductos] = useState(PRODUCTOS_INIT)
+  const [modalUsuario, setModalUsuario] = useState(false)
+  const [modalProducto, setModalProducto] = useState(false)
+  const [formU, setFormU] = useState({ nombre: '', email: '', rol: 'Cliente' })
+  const [formP, setFormP] = useState({ nombre: '', categoria: 'Bebida', precio: '' })
+
+  function crearUsuario() {
+    if (!formU.nombre || !formU.email) return
+    setUsuarios(prev => [...prev, { id: Date.now(), ...formU, activo: true }])
+    setFormU({ nombre: '', email: '', rol: 'Cliente' })
+    setModalUsuario(false)
+  }
+
+  function crearProducto() {
+    if (!formP.nombre || !formP.precio) return
+    setProductos(prev => [...prev, { id: Date.now(), ...formP, precio: parseFloat(formP.precio), activo: true }])
+    setFormP({ nombre: '', categoria: 'Bebida', precio: '' })
+    setModalProducto(false)
+  }
+
+  function eliminarUsuario(id) { setUsuarios(prev => prev.filter(u => u.id !== id)) }
+  function eliminarProducto(id) { setProductos(prev => prev.filter(p => p.id !== id)) }
+
+  return (
+    <div className="p-4 sm:p-8">
+      <div className="mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">Panel de administración</h1>
+        <p className="text-zinc-500 text-sm mt-1">Gestión de usuarios y productos</p>
+      </div>
+
+      {/* Stats */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+        {[
+          { label: 'Usuarios totales', valor: usuarios.length },
+          { label: 'Usuarios activos', valor: usuarios.filter(u => u.activo).length },
+          { label: 'Productos',        valor: productos.length },
+          { label: 'Productos activos',valor: productos.filter(p => p.activo).length },
+        ].map(stat => (
+          <div key={stat.label} className="bg-zinc-900 border border-zinc-800 rounded-xl p-4">
+            <p className="text-zinc-500 text-xs">{stat.label}</p>
+            <p className="text-2xl font-bold text-zinc-100 mt-1">{stat.valor}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Tabs */}
+      <div className="flex gap-2 mb-6">
+        {TABS.map(t => (
+          <button
+            key={t}
+            onClick={() => setTab(t)}
+            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              tab === t ? 'bg-gold-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+            }`}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+
+      {/* Tabla usuarios */}
+      {tab === 'Usuarios' && (
+        <div>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-semibold text-zinc-100">Usuarios</h2>
+            <button
+              onClick={() => setModalUsuario(true)}
+              className="flex items-center gap-2 px-4 py-2 bg-gold-500 hover:bg-gold-600 text-zinc-950 text-sm font-semibold rounded-lg"
+            >
+              <Plus size={16} /> Nuevo usuario
+            </button>
+          </div>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden overflow-x-auto">
+            <table className="w-full text-sm min-w-125">
+              <thead>
+                <tr className="border-b border-zinc-800 text-zinc-500 text-xs uppercase">
+                  <th className="text-left px-4 py-3">Nombre</th>
+                  <th className="text-left px-4 py-3">Email</th>
+                  <th className="text-left px-4 py-3">Rol</th>
+                  <th className="text-left px-4 py-3">Estado</th>
+                  <th className="px-4 py-3" />
+                </tr>
+              </thead>
+              <tbody>
+                {usuarios.map(u => (
+                  <tr key={u.id} className="border-b border-zinc-800/50 hover:bg-zinc-800/30">
+                    <td className="px-4 py-3 text-zinc-100 font-medium">{u.nombre}</td>
+                    <td className="px-4 py-3 text-zinc-400">{u.email}</td>
+                    <td className="px-4 py-3">
+                      <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${ROL_COLOR[u.rol] || 'bg-zinc-700 text-zinc-400'}`}>
+                        {u.rol}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${u.activo ? 'bg-emerald-500/20 text-emerald-400' : 'bg-zinc-700 text-zinc-500'}`}>
+                        {u.activo ? 'Activo' : 'Inactivo'}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      <button onClick={() => eliminarUsuario(u.id)} className="text-zinc-600 hover:text-red-400 transition-colors">
+                        <Trash2 size={15} />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Tabla productos */}
+      {tab === 'Productos' && (
+        <div>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-semibold text-zinc-100">Productos</h2>
+            <button
+              onClick={() => setModalProducto(true)}
+              className="flex items-center gap-2 px-4 py-2 bg-gold-500 hover:bg-gold-600 text-zinc-950 text-sm font-semibold rounded-lg"
+            >
+              <Plus size={16} /> Nuevo producto
+            </button>
+          </div>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden overflow-x-auto">
+            <table className="w-full text-sm min-w-125">
+              <thead>
+                <tr className="border-b border-zinc-800 text-zinc-500 text-xs uppercase">
+                  <th className="text-left px-4 py-3">Nombre</th>
+                  <th className="text-left px-4 py-3">Categoría</th>
+                  <th className="text-left px-4 py-3">Precio</th>
+                  <th className="text-left px-4 py-3">Estado</th>
+                  <th className="px-4 py-3" />
+                </tr>
+              </thead>
+              <tbody>
+                {productos.map(p => (
+                  <tr key={p.id} className="border-b border-zinc-800/50 hover:bg-zinc-800/30">
+                    <td className="px-4 py-3 text-zinc-100 font-medium">{p.nombre}</td>
+                    <td className="px-4 py-3 text-zinc-400">{p.categoria}</td>
+                    <td className="px-4 py-3 text-gold-400 font-semibold">{p.precio.toFixed(2)} €</td>
+                    <td className="px-4 py-3">
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${p.activo ? 'bg-emerald-500/20 text-emerald-400' : 'bg-zinc-700 text-zinc-500'}`}>
+                        {p.activo ? 'Activo' : 'Inactivo'}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      <button onClick={() => eliminarProducto(p.id)} className="text-zinc-600 hover:text-red-400 transition-colors">
+                        <Trash2 size={15} />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Modal usuario */}
+      {modalUsuario && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+          <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 w-96">
+            <h3 className="text-lg font-bold text-zinc-100 mb-4">Nuevo usuario</h3>
+            <div className="space-y-3">
+              <input
+                placeholder="Nombre completo"
+                value={formU.nombre}
+                onChange={e => setFormU(p => ({ ...p, nombre: e.target.value }))}
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500"
+              />
+              <input
+                placeholder="Email"
+                value={formU.email}
+                onChange={e => setFormU(p => ({ ...p, email: e.target.value }))}
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500"
+              />
+              <select
+                value={formU.rol}
+                onChange={e => setFormU(p => ({ ...p, rol: e.target.value }))}
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500"
+              >
+                {['Cliente', 'Staff', 'Portero', 'Admin'].map(r => <option key={r}>{r}</option>)}
+              </select>
+            </div>
+            <div className="flex gap-3 mt-6">
+              <button onClick={() => setModalUsuario(false)} className="flex-1 py-2 rounded-lg border border-zinc-700 text-zinc-400 text-sm hover:bg-zinc-800">
+                Cancelar
+              </button>
+              <button onClick={crearUsuario} className="flex-1 py-2 rounded-lg bg-gold-500 hover:bg-gold-600 text-zinc-950 text-sm font-semibold">
+                Crear
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal producto */}
+      {modalProducto && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+          <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 w-96">
+            <h3 className="text-lg font-bold text-zinc-100 mb-4">Nuevo producto</h3>
+            <div className="space-y-3">
+              <input
+                placeholder="Nombre del producto"
+                value={formP.nombre}
+                onChange={e => setFormP(p => ({ ...p, nombre: e.target.value }))}
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500"
+              />
+              <select
+                value={formP.categoria}
+                onChange={e => setFormP(p => ({ ...p, categoria: e.target.value }))}
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500"
+              >
+                {['Bebida', 'Comida'].map(c => <option key={c}>{c}</option>)}
+              </select>
+              <input
+                placeholder="Precio (€)"
+                type="number"
+                value={formP.precio}
+                onChange={e => setFormP(p => ({ ...p, precio: e.target.value }))}
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500"
+              />
+            </div>
+            <div className="flex gap-3 mt-6">
+              <button onClick={() => setModalProducto(false)} className="flex-1 py-2 rounded-lg border border-zinc-700 text-zinc-400 text-sm hover:bg-zinc-800">
+                Cancelar
+              </button>
+              <button onClick={crearProducto} className="flex-1 py-2 rounded-lg bg-gold-500 hover:bg-gold-600 text-zinc-950 text-sm font-semibold">
+                Crear
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+</file>
+
+<file path="src/app/globals.css">
+@import "tailwindcss";
+
+@theme {
+  --color-gold-400: #D4A843;
+  --color-gold-500: #C9A030;
+  --color-gold-600: #A07820;
+  --font-display: 'Cormorant Garant', Georgia, serif;
+
+}
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  @apply antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garant', Georgia, serif;
+}
+
+::-webkit-scrollbar {
+  @apply w-1;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-zinc-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-700 rounded-full;
+}
+</file>
+
+<file path="src/app/IniciarSesion.jsx">
+'use client'
+
+import { useEffect } from 'react'
+import { createClient } from '@/lib/supabase/client'
+import { useSesionStore } from '@/store/sesionStore'
+
+async function obtenerRol(supabase, usuarioId) {
+  const { data: perfil } = await supabase
+    .from('perfiles')
+    .select('rol')
+    .eq('id', usuarioId)
+    .single()
+
+  return perfil?.rol ?? 'cliente'
+}
+
+export default function IniciarSesion() {
+  const { setSesion, limpiarSesion } = useSesionStore()
+
+  useEffect(() => {
+    const supabase = createClient()
+
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
+      if (!session) {
+        limpiarSesion()
+        return
+      }
+
+      const rol = await obtenerRol(supabase, session.user.id)
+      setSesion(session.user, rol)
+    })
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (_evento, session) => {
+      if (!session) {
+        limpiarSesion()
+        return
+      }
+
+      const rol = await obtenerRol(supabase, session.user.id)
+      setSesion(session.user, rol)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [limpiarSesion, setSesion])
+
+  return null
+}
+</file>
+
+<file path="src/app/layout.jsx">
+import './globals.css'
+import Shell from '@/components/Shell'
+import IniciarSesion from './IniciarSesion'
+
+export const metadata = {
+  title: 'Flex — Live Sessions',
+  description: 'Tu noche, tu ritmo',
+}
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="es">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <IniciarSesion />
+        <Shell>{children}</Shell>
+      </body>
+    </html>
+  )
+}
+</file>
+
+<file path="src/app/login/page.jsx">
+'use client'
+
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import FlexLogo from '@/components/FlexLogo'
+import { createClient } from '@/lib/supabase/client'
+
+const RUTA_POR_ROL = {
+  cliente: '/',
+  staff: '/staff',
+  portero: '/porteros',
+  admin: '/admin',
+}
+
+export default function PaginaLogin() {
+  const router = useRouter()
+  const [registroExitoso, setRegistroExitoso] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [cargando, setCargando] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setRegistroExitoso(params.get('registered') === '1')
+  }, [])
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setError('')
+    setCargando(true)
+
+    const supabase = createClient()
+
+    const { data, error: authError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+
+    if (authError) {
+      setCargando(false)
+      setError('Email o contrasena incorrectos.')
+      return
+    }
+
+    const { data: perfil } = await supabase
+      .from('perfiles')
+      .select('rol')
+      .eq('id', data.user.id)
+      .single()
+
+    const rol = perfil?.rol ?? 'cliente'
+    router.push(RUTA_POR_ROL[rol] ?? '/')
+  }
+
+  return (
+    <div className="min-h-screen flex">
+      <div className="hidden lg:block lg:w-1/2 relative overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200&auto=format&fit=crop&q=80"
+          alt="Ambiente Flex"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-zinc-950/60 to-zinc-950/10" />
+        <div className="absolute bottom-12 left-10 right-10">
+          <p className="text-white/80 text-xl font-light italic leading-relaxed">
+            &quot;La noche que siempre<br />quisiste vivir.&quot;
+          </p>
+        </div>
+      </div>
+
+      <div className="flex-1 flex flex-col justify-center items-center px-8 py-12 bg-zinc-950">
+        <div className="lg:hidden absolute inset-0 -z-10">
+          <img
+            src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80"
+            alt=""
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+
+        <div className="w-full max-w-sm">
+          <div className="mb-10 flex justify-center">
+            <FlexLogo className="h-12 w-auto" />
+          </div>
+
+          <h1 className="text-2xl font-bold text-zinc-100 mb-1">Bienvenido de nuevo</h1>
+          <p className="text-zinc-500 text-sm mb-8">Accede a tu cuenta Flex</p>
+
+          {registroExitoso && (
+            <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm rounded-xl px-4 py-3 mb-4">
+              Cuenta creada correctamente. Ahora inicia sesión.
+            </div>
+          )}
+          {error && (
+            <div className="bg-red-500/10 border border-red-500/30 text-red-400 text-sm rounded-xl px-4 py-3 mb-4">
+              {error}
+            </div>
+          )}
+
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            <div>
+              <label className="text-zinc-500 text-xs block mb-1.5">Email</label>
+              <input
+                type="email"
+                placeholder="tu@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+              />
+            </div>
+            <div>
+              <label className="text-zinc-500 text-xs block mb-1.5">Contrasena</label>
+              <input
+                type="password"
+                placeholder="Minimo 8 caracteres"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+              />
+            </div>
+
+            <div className="flex justify-end">
+              <a href="#" className="text-xs text-gold-500 hover:text-gold-400">Olvidaste tu contrasena?</a>
+            </div>
+
+            <button
+              type="submit"
+              disabled={cargando}
+              className="w-full py-3 bg-gold-500 hover:bg-gold-600 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl transition-colors mt-2"
+            >
+              {cargando ? 'Entrando...' : 'Entrar'}
+            </button>
+          </form>
+
+          <p className="text-center text-zinc-500 text-sm mt-8">
+            No tienes cuenta?{' '}
+            <Link href="/register" className="text-gold-400 hover:text-gold-300 font-medium">
+              Registrate
+            </Link>
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="src/app/mi-area/page.jsx">
+'use client'
+
+import { useState } from 'react'
+import { MapPin, ShoppingBag } from 'lucide-react'
+
+
+const ZONAS = [
+  { id: 1, nombre: 'Sala Roja VIP', descripcion: 'Reserva 23:00–01:00 · 2h', evento: 'Jazz Nights', fecha: '25 mayo' },
+]
+
+const PEDIDOS = [
+  {
+    id: 1, fecha: '25 mayo · 23:14', mesa: 'Mesa 7', estado: 'completado',
+    items: [{ nombre: 'Gin Tonic Premium', cantidad: 2, precio: 9.0 }, { nombre: 'Nachos', cantidad: 1, precio: 7.0 }],
+  },
+  {
+    id: 2, fecha: '25 mayo · 00:02', mesa: 'Mesa 7', estado: 'pendiente',
+    items: [{ nombre: 'Mojito', cantidad: 2, precio: 8.5 }],
+  },
+]
+
+const TABS = [
+  { id: 'zonas', label: 'Mis zonas', icon: MapPin },
+  { id: 'pedidos', label: 'Pedidos', icon: ShoppingBag },
+]
+
+export default function PaginaMiArea() {
+  const [tab, setTab] = useState('zonas')
+
+  return (
+    <div className="p-4 sm:p-8">
+      <div className="mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">Mi área</h1>
+        <p className="text-zinc-500 text-sm mt-1">Alex García · Cliente</p>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex gap-2 mb-8">
+        {TABS.map(t => {
+          const Icon = t.icon
+          return (
+            <button
+              key={t.id}
+              onClick={() => setTab(t.id)}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${tab === t.id ? 'bg-gold-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+                }`}
+            >
+              <Icon size={15} /> {t.label}
+            </button>
+          )
+        })}
+      </div>
+
+      {/* Zonas */}
+      {tab === 'zonas' && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+          {ZONAS.map(z => (
+            <div key={z.id} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+              <div className="flex items-start gap-3 mb-3">
+                <MapPin size={18} className="text-gold-400 mt-0.5 shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-zinc-100">{z.nombre}</h3>
+                  <p className="text-zinc-500 text-sm">{z.descripcion}</p>
+                </div>
+              </div>
+              <div className="border-t border-zinc-800 pt-3 flex items-center justify-between text-xs text-zinc-500">
+                <span>{z.evento}</span>
+                <span>{z.fecha}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Pedidos */}
+      {tab === 'pedidos' && (
+        <div className="space-y-4 max-w-2xl">
+          {PEDIDOS.map(p => {
+            const total = p.items.reduce((s, i) => s + i.precio * i.cantidad, 0)
+            return (
+              <div key={p.id} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                <div className="flex items-center justify-between mb-3">
+                  <div>
+                    <p className="text-zinc-100 font-medium text-sm">{p.mesa}</p>
+                    <p className="text-zinc-500 text-xs">{p.fecha}</p>
+                  </div>
+                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${p.estado === 'completado'
+                      ? 'bg-emerald-500/20 text-emerald-400'
+                      : 'bg-amber-500/20 text-amber-400'
+                    }`}>
+                    {p.estado === 'completado' ? 'Entregado' : 'En camino'}
+                  </span>
+                </div>
+                <ul className="space-y-1 border-t border-zinc-800 pt-3">
+                  {p.items.map((item, i) => (
+                    <li key={i} className="flex justify-between text-sm">
+                      <span className="text-zinc-400">{item.cantidad}× {item.nombre}</span>
+                      <span className="text-zinc-500">{(item.precio * item.cantidad).toFixed(2)} €</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex justify-between items-center mt-3 pt-3 border-t border-zinc-800">
+                  <span className="text-zinc-500 text-xs">Total</span>
+                  <span className="text-gold-400 font-bold">{total.toFixed(2)} €</span>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )}
+    </div>
+  )
+}
+</file>
+
+<file path="src/app/page.jsx">
+'use client'
+
+import { useState } from 'react'
+import { useCarritoStore } from '@/store/carritoStore'
+import { ShoppingCart, Plus, Minus, X } from 'lucide-react'
+
+const PRODUCTOS = [
+  { id: 1,  nombre: 'Cerveza Artesana',     categoria: 'Bebida', precio: 4.5,  img: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&auto=format&fit=crop&q=80' },
+  { id: 2,  nombre: 'Gin Tonic Premium',    categoria: 'Bebida', precio: 9.0,  img: 'https://images.unsplash.com/photo-1560512823-829485b8bf24?w=400&auto=format&fit=crop&q=80' },
+  { id: 3,  nombre: 'Agua mineral',         categoria: 'Bebida', precio: 2.0,  img: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&auto=format&fit=crop&q=80' },
+  { id: 4,  nombre: 'Mojito',               categoria: 'Bebida', precio: 8.5,  img: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&auto=format&fit=crop&q=80' },
+  { id: 5,  nombre: 'Coca-Cola',            categoria: 'Bebida', precio: 3.0,  img: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&auto=format&fit=crop&q=80' },
+  { id: 6,  nombre: 'Vino tinto',           categoria: 'Bebida', precio: 5.5,  img: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?w=400&auto=format&fit=crop&q=80' },
+  { id: 7,  nombre: 'Nachos con guacamole', categoria: 'Comida', precio: 7.0,  img: 'https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=400&auto=format&fit=crop&q=80' },
+  { id: 8,  nombre: 'Tabla de quesos',      categoria: 'Comida', precio: 12.0, img: 'https://images.unsplash.com/photo-1452195100486-9cc805987862?w=400&auto=format&fit=crop&q=80' },
+  { id: 9,  nombre: 'Alitas BBQ',           categoria: 'Comida', precio: 9.5,  img: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&auto=format&fit=crop&q=80' },
+  { id: 10, nombre: 'Patatas bravas',       categoria: 'Comida', precio: 5.0,  img: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&auto=format&fit=crop&q=80' },
+  { id: 11, nombre: 'Hamburguesa Flex',     categoria: 'Comida', precio: 11.0, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&auto=format&fit=crop&q=80' },
+  { id: 12, nombre: 'Mini pizzas',          categoria: 'Comida', precio: 8.0,  img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&auto=format&fit=crop&q=80' },
+]
+
+const CATEGORIAS = ['Todo', 'Bebida', 'Comida']
+
+export default function PaginaPedir() {
+  const { items, mesaNumero, setMesaNumero, agregarItem, quitarItem, eliminarItem, vaciarCarrito } = useCarritoStore()
+
+  const totalItems = useCarritoStore((s) => s.items.reduce((acc, i) => acc + i.cantidad, 0))
+  const total = useCarritoStore((s) => s.items.reduce((acc, i) => acc + i.precio * i.cantidad, 0))
+
+  const [cat, setCat] = useState('Todo')
+  const [carritoAbierto, setCarritoAbierto] = useState(false)
+  const [pedidoEnviado, setPedidoEnviado] = useState(false)
+  const [modalMesa, setModalMesa] = useState(false)
+
+  const productosFiltrados = cat === 'Todo' ? PRODUCTOS : PRODUCTOS.filter(p => p.categoria === cat)
+
+  function handleConfirmarPedido(e) {
+    e.preventDefault()
+    if (!mesaNumero) return
+    setModalMesa(false)
+    setPedidoEnviado(true)
+    vaciarCarrito()
+    setTimeout(() => {
+      setPedidoEnviado(false)
+      setCarritoAbierto(false)
+    }, 3000)
+  }
+
+  return (
+    <div className="relative min-h-full">
+      {/* Contenido principal */}
+      <div className="p-4 sm:p-8">
+        <div className="mb-6">
+          <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">Pedir a mesa</h1>
+          <p className="text-zinc-500 text-sm mt-1">Mesa 7 · Sala Principal</p>
+        </div>
+
+        {/* Filtros */}
+        <div className="flex gap-2 mb-6 flex-wrap">
+          {CATEGORIAS.map(c => (
+            <button
+              key={c}
+              onClick={() => setCat(c)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                cat === c
+                  ? 'bg-gold-500 text-zinc-950'
+                  : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+              }`}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+
+        {/* Grid productos — 1 col móvil, 2 tablet, 3 desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-24">
+          {productosFiltrados.map(p => {
+            const enCarrito = items.find(i => i.id === p.id)
+            return (
+              <div key={p.id} className="bg-zinc-900 rounded-xl border border-zinc-800 p-4 flex flex-col gap-3">
+                <div className="h-36 rounded-lg overflow-hidden bg-zinc-800">
+                  <img src={p.img} alt={p.nombre} className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <p className="text-zinc-100 font-medium text-sm">{p.nombre}</p>
+                  <p className="text-xs text-zinc-500">{p.categoria}</p>
+                </div>
+                <div className="flex items-center justify-between mt-auto">
+                  <span className="text-gold-400 font-semibold">{p.precio.toFixed(2)} €</span>
+                  {enCarrito ? (
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => quitarItem(p.id)}
+                        className="w-7 h-7 rounded-full bg-zinc-700 flex items-center justify-center hover:bg-zinc-600 transition-colors"
+                      >
+                        <Minus size={13} />
+                      </button>
+                      <span className="text-zinc-100 text-sm w-5 text-center font-medium">{enCarrito.cantidad}</span>
+                      <button
+                        onClick={() => agregarItem(p)}
+                        className="w-7 h-7 rounded-full bg-gold-500 flex items-center justify-center hover:bg-gold-600 transition-colors"
+                      >
+                        <Plus size={13} className="text-zinc-950" />
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => agregarItem(p)}
+                      className="flex items-center gap-1 px-3 py-1 bg-gold-500 hover:bg-gold-600 text-zinc-950 text-xs font-semibold rounded-lg transition-colors"
+                    >
+                      <Plus size={12} /> Añadir
+                    </button>
+                  )}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Botón flotante carrito */}
+      <button
+        onClick={() => setCarritoAbierto(true)}
+        className="fixed bottom-6 right-6 z-10 w-14 h-14 bg-gold-500 hover:bg-gold-600 text-zinc-950 rounded-full shadow-lg flex items-center justify-center transition-colors"
+      >
+        <ShoppingCart size={22} />
+        {totalItems > 0 && (
+          <span className="absolute -top-1 -right-1 w-5 h-5 bg-zinc-950 text-gold-400 text-xs font-bold rounded-full flex items-center justify-center border border-gold-500">
+            {totalItems}
+          </span>
+        )}
+      </button>
+
+      {/* Backdrop */}
+      {carritoAbierto && (
+        <div
+          className="fixed inset-0 bg-black/50 z-20"
+          onClick={() => setCarritoAbierto(false)}
+        />
+      )}
+
+      {/* Drawer carrito */}
+      <div
+        className={`fixed inset-y-0 right-0 z-30 w-full sm:w-96 bg-zinc-900 border-l border-zinc-800 flex flex-col transition-transform duration-300 ${
+          carritoAbierto ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        {/* Cabecera drawer */}
+        <div className="px-6 py-5 border-b border-zinc-800 flex items-center gap-2">
+          <ShoppingCart size={18} className="text-gold-400" />
+          <h2 className="font-semibold text-zinc-100">Mi pedido</h2>
+          {totalItems > 0 && (
+            <span className="bg-gold-500 text-zinc-950 text-xs font-bold px-2 py-0.5 rounded-full">{totalItems}</span>
+          )}
+          <button
+            onClick={() => setCarritoAbierto(false)}
+            className="ml-auto text-zinc-500 hover:text-zinc-100 transition-colors"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Items */}
+        <div className="flex-1 overflow-y-auto px-4 py-4">
+          {pedidoEnviado && (
+            <div className="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-sm rounded-lg px-4 py-3 mb-4">
+              ¡Pedido enviado! Llega en 10–15 min.
+            </div>
+          )}
+          {items.length === 0 && !pedidoEnviado ? (
+            <div className="flex flex-col items-center justify-center h-full gap-3 text-center">
+              <ShoppingCart size={40} className="text-zinc-700" />
+              <p className="text-zinc-500 text-sm">Tu pedido está vacío</p>
+              <p className="text-zinc-600 text-xs">Añade productos desde el catálogo</p>
+            </div>
+          ) : (
+            <ul className="space-y-3">
+              {items.map(item => (
+                <li key={item.id} className="flex items-center gap-3 bg-zinc-800/50 rounded-xl px-3 py-3">
+                  <img src={item.img} alt={item.nombre} className="w-10 h-10 rounded-lg object-cover shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-zinc-100 font-medium truncate">{item.nombre}</p>
+                    <p className="text-xs text-zinc-500">{item.cantidad} × {item.precio.toFixed(2)} €</p>
+                  </div>
+                  <span className="text-sm text-gold-400 font-semibold shrink-0">
+                    {(item.precio * item.cantidad).toFixed(2)} €
+                  </span>
+                  <button
+                    onClick={() => eliminarItem(item.id)}
+                    className="text-zinc-600 hover:text-red-400 transition-colors shrink-0"
+                  >
+                    <X size={15} />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        {/* Footer con total y botón */}
+        {items.length > 0 && (
+          <div className="px-4 py-4 border-t border-zinc-800">
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-zinc-400 text-sm">Total</span>
+              <span className="text-zinc-100 font-bold text-xl">{total.toFixed(2)} €</span>
+            </div>
+            <button
+              onClick={() => setModalMesa(true)}
+              className="w-full py-3 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl transition-colors"
+            >
+              Enviar pedido
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Modal número de mesa */}
+      {modalMesa && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/70" onClick={() => setModalMesa(false)} />
+          <form
+            onSubmit={handleConfirmarPedido}
+            className="relative bg-zinc-900 border border-zinc-700 rounded-2xl p-8 w-full max-w-sm mx-4 shadow-2xl"
+          >
+            <h2 className="text-lg font-bold text-zinc-100 mb-1">¿En qué mesa estás?</h2>
+            <p className="text-zinc-500 text-sm mb-6">Introduce el número que aparece en tu mesa.</p>
+            <input
+              type="number"
+              min="1"
+              placeholder="Ej. 7"
+              value={mesaNumero ?? ''}
+              onChange={e => setMesaNumero(Number(e.target.value))}
+              autoFocus
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-2xl text-center font-bold text-zinc-100 outline-none focus:border-gold-500 transition-colors mb-6"
+            />
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => setModalMesa(false)}
+                className="flex-1 py-2.5 border border-zinc-700 text-zinc-400 hover:bg-zinc-800 rounded-xl text-sm transition-colors"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                disabled={!mesaNumero}
+                className="flex-1 py-2.5 bg-gold-500 hover:bg-gold-600 disabled:opacity-40 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl text-sm transition-colors"
+              >
+                Confirmar pedido
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+    </div>
+  )
+}
+</file>
+
+<file path="src/app/perfil/page.jsx">
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { Camera, Lock, Bell, Shield, LogOut, CheckCircle, CreditCard, Plus, Trash2 } from 'lucide-react'
+import { createClient } from '@/lib/supabase/client'
+import { useSesionStore } from '@/store/sesionStore'
+
+const TABS = [
+  { id: 'personal',       label: 'Datos personales' },
+  { id: 'pago',           label: 'Pago' },
+  { id: 'seguridad',      label: 'Seguridad' },
+  { id: 'notificaciones', label: 'Notificaciones' },
+]
+
+const TARJETAS_INIT = [
+  { id: 1, tipo: 'Visa',       ultimos: '4242', expira: '12/27', predeterminada: true },
+  { id: 2, tipo: 'Mastercard', ultimos: '8210', expira: '09/26', predeterminada: false },
+]
+
+function iconoRed(tipo) {
+  if (tipo === 'Visa') return (
+    <span className="text-blue-400 font-black italic text-sm tracking-tight">VISA</span>
+  )
+  return (
+    <span className="text-red-400 font-black text-xs">MC</span>
+  )
+}
+
+export default function PaginaPerfil() {
+  const router = useRouter()
+  const { limpiarSesion } = useSesionStore()
+
+  const [tab, setTab]           = useState('personal')
+  const [guardado, setGuardado] = useState(false)
+  const [avatar, setAvatar]     = useState(null)
+
+  const [perfil, setPerfil] = useState({
+    nombre: 'Alex García',
+    email: 'alex@flex.es',
+    telefono: '+34 612 345 678',
+    fechaNac: '1995-08-14',
+  })
+
+  const [pass, setPass] = useState({ actual: '', nueva: '', confirmar: '' })
+
+  const [tarjetas, setTarjetas]   = useState(TARJETAS_INIT)
+  const [nuevaTarjeta, setNuevaTarjeta] = useState(false)
+  const [formTarjeta, setFormTarjeta]   = useState({ numero: '', titular: '', expira: '', cvv: '' })
+
+  function agregarTarjeta(e) {
+    e.preventDefault()
+    const ultimos = formTarjeta.numero.replace(/\s/g, '').slice(-4)
+    const tipo = formTarjeta.numero.startsWith('4') ? 'Visa' : 'Mastercard'
+    setTarjetas(prev => [...prev, { id: Date.now(), tipo, ultimos, expira: formTarjeta.expira, predeterminada: false }])
+    setFormTarjeta({ numero: '', titular: '', expira: '', cvv: '' })
+    setNuevaTarjeta(false)
+  }
+
+  function eliminarTarjeta(id) { setTarjetas(prev => prev.filter(t => t.id !== id)) }
+
+  function predeterminar(id) { setTarjetas(prev => prev.map(t => ({ ...t, predeterminada: t.id === id }))) }
+
+  const [notifs, setNotifs] = useState({
+    pedidos:    true,
+    entradas:   true,
+    ofertas:    false,
+    vip:        true,
+    newsletter: false,
+  })
+
+  async function cerrarSesion() {
+    const supabase = createClient()
+    await supabase.auth.signOut()
+    limpiarSesion()
+    router.push('/login')
+  }
+
+  function guardar(e) {
+    e.preventDefault()
+    setGuardado(true)
+    setTimeout(() => setGuardado(false), 2500)
+  }
+
+  return (
+    <div className="p-4 sm:p-8 max-w-2xl">
+      <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">Mi perfil</h1>
+          <p className="text-zinc-500 text-sm mt-1">Gestiona tu cuenta y preferencias</p>
+        </div>
+        <button
+          type="button"
+          onClick={cerrarSesion}
+          className="self-start sm:self-auto px-4 py-2 rounded-full bg-red-500/10 border border-red-500 text-red-300 hover:bg-red-500/15 transition-colors text-sm"
+        >
+          Cerrar sesión
+        </button>
+      </div>
+
+      {/* Avatar */}
+      <div className="flex items-center gap-5 mb-8">
+        <div className="relative">
+          <div className="w-20 h-20 rounded-full bg-gold-500/20 border-2 border-gold-500/40 overflow-hidden flex items-center justify-center">
+            {avatar
+              ? <img src={avatar} alt="Avatar" className="w-full h-full object-cover" />
+              : <span className="text-3xl font-bold text-gold-400">A</span>
+            }
+          </div>
+          <label className="absolute -bottom-1 -right-1 w-7 h-7 bg-gold-500 hover:bg-gold-600 rounded-full flex items-center justify-center cursor-pointer transition-colors">
+            <Camera size={13} className="text-zinc-950" />
+            <input type="file" accept="image/*" className="hidden" onChange={e => {
+              const f = e.target.files?.[0]
+              if (f) setAvatar(URL.createObjectURL(f))
+            }} />
+          </label>
+        </div>
+        <div>
+          <p className="text-zinc-100 font-semibold">{perfil.nombre}</p>
+          <p className="text-zinc-500 text-sm">{perfil.email}</p>
+          <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full mt-1 inline-block">Cliente</span>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex gap-2 mb-6 flex-wrap">
+        {TABS.map(t => (
+          <button
+            key={t.id}
+            onClick={() => setTab(t.id)}
+            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              tab === t.id ? 'bg-gold-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+            }`}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Toast */}
+      {guardado && (
+        <div className="flex items-center gap-2 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-sm rounded-xl px-4 py-3 mb-6">
+          <CheckCircle size={16} /> Cambios guardados correctamente
+        </div>
+      )}
+
+      {/* Personal */}
+      {tab === 'personal' && (
+        <form onSubmit={guardar} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { key: 'nombre',   label: 'Nombre completo', type: 'text' },
+              { key: 'telefono', label: 'Teléfono',        type: 'text' },
+            ].map(({ key, label, type }) => (
+              <div key={key}>
+                <label className="text-zinc-500 text-xs block mb-1.5">{label}</label>
+                <input type={type} value={perfil[key]}
+                  onChange={e => setPerfil(p => ({ ...p, [key]: e.target.value }))}
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+                />
+              </div>
+            ))}
+          </div>
+          <div>
+            <label className="text-zinc-500 text-xs block mb-1.5">Email</label>
+            <input type="email" value={perfil.email}
+              onChange={e => setPerfil(p => ({ ...p, email: e.target.value }))}
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+            />
+          </div>
+          <div>
+            <label className="text-zinc-500 text-xs block mb-1.5">Fecha de nacimiento</label>
+            <input type="date" value={perfil.fechaNac}
+              onChange={e => setPerfil(p => ({ ...p, fechaNac: e.target.value }))}
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+            />
+          </div>
+          <button type="submit" className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl text-sm transition-colors">
+            Guardar cambios
+          </button>
+        </form>
+      )}
+
+      {/* Pago */}
+      {tab === 'pago' && (
+        <div className="space-y-4">
+          {/* Tarjetas guardadas */}
+          {tarjetas.map(t => (
+            <div key={t.id} className={`bg-zinc-900 border rounded-2xl p-5 flex items-center gap-4 ${t.predeterminada ? 'border-gold-500/50' : 'border-zinc-800'}`}>
+              {/* Mini tarjeta visual */}
+              <div className="w-14 h-10 bg-zinc-800 rounded-lg flex items-center justify-center shrink-0 border border-zinc-700">
+                {iconoRed(t.tipo)}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-zinc-100 text-sm font-medium">{t.tipo} •••• {t.ultimos}</p>
+                <p className="text-zinc-500 text-xs">Expira {t.expira}</p>
+              </div>
+              <div className="flex items-center gap-3 shrink-0">
+                {t.predeterminada
+                  ? <span className="text-xs bg-gold-500/20 text-gold-400 px-2 py-0.5 rounded-full">Predeterminada</span>
+                  : <button onClick={() => predeterminar(t.id)} className="text-xs text-zinc-500 hover:text-gold-400 transition-colors">Usar por defecto</button>
+                }
+                <button onClick={() => eliminarTarjeta(t.id)} className="text-zinc-600 hover:text-red-400 transition-colors">
+                  <Trash2 size={15} />
+                </button>
+              </div>
+            </div>
+          ))}
+
+          {/* Formulario nueva tarjeta */}
+          {nuevaTarjeta ? (
+            <form onSubmit={agregarTarjeta} className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 space-y-4">
+              <div className="flex items-center gap-2 mb-2">
+                <CreditCard size={16} className="text-gold-400" />
+                <h3 className="text-zinc-100 font-semibold text-sm">Nueva tarjeta</h3>
+              </div>
+
+              {/* Preview tarjeta */}
+              <div className="h-36 bg-linear-to-br from-zinc-700 to-zinc-800 rounded-xl p-5 flex flex-col justify-between border border-zinc-600 mb-2">
+                <div className="flex justify-between items-start">
+                  <div className="w-8 h-6 bg-gold-500/60 rounded-sm" />
+                  {iconoRed(formTarjeta.numero.startsWith('4') ? 'Visa' : 'Mastercard')}
+                </div>
+                <div>
+                  <p className="text-zinc-300 font-mono text-sm tracking-widest">
+                    {formTarjeta.numero || '•••• •••• •••• ••••'}
+                  </p>
+                  <div className="flex justify-between mt-1">
+                    <p className="text-zinc-400 text-xs">{formTarjeta.titular || 'TITULAR'}</p>
+                    <p className="text-zinc-400 text-xs">{formTarjeta.expira || 'MM/AA'}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label className="text-zinc-500 text-xs block mb-1.5">Número de tarjeta</label>
+                <input
+                  placeholder="1234 5678 9012 3456"
+                  value={formTarjeta.numero}
+                  onChange={e => setFormTarjeta(p => ({ ...p, numero: e.target.value }))}
+                  maxLength={19}
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 font-mono outline-none focus:border-gold-500 transition-colors"
+                />
+              </div>
+              <div>
+                <label className="text-zinc-500 text-xs block mb-1.5">Titular</label>
+                <input
+                  placeholder="ALEX GARCÍA"
+                  value={formTarjeta.titular}
+                  onChange={e => setFormTarjeta(p => ({ ...p, titular: e.target.value.toUpperCase() }))}
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="text-zinc-500 text-xs block mb-1.5">Caducidad</label>
+                  <input
+                    placeholder="MM/AA"
+                    value={formTarjeta.expira}
+                    onChange={e => setFormTarjeta(p => ({ ...p, expira: e.target.value }))}
+                    maxLength={5}
+                    className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 font-mono outline-none focus:border-gold-500 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="text-zinc-500 text-xs block mb-1.5">CVV</label>
+                  <input
+                    placeholder="•••"
+                    type="password"
+                    value={formTarjeta.cvv}
+                    onChange={e => setFormTarjeta(p => ({ ...p, cvv: e.target.value }))}
+                    maxLength={4}
+                    className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 font-mono outline-none focus:border-gold-500 transition-colors"
+                  />
+                </div>
+              </div>
+              <p className="text-zinc-600 text-xs flex items-center gap-1.5">
+                <Shield size={11} /> Los datos se procesarán de forma segura con Stripe. Flex no almacena tu número de tarjeta.
+              </p>
+              <div className="flex gap-3 pt-1">
+                <button type="button" onClick={() => setNuevaTarjeta(false)}
+                  className="flex-1 py-2.5 border border-zinc-700 text-zinc-400 hover:bg-zinc-800 rounded-xl text-sm transition-colors">
+                  Cancelar
+                </button>
+                <button type="submit"
+                  className="flex-1 py-2.5 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl text-sm transition-colors">
+                  Guardar tarjeta
+                </button>
+              </div>
+            </form>
+          ) : (
+            <button
+              onClick={() => setNuevaTarjeta(true)}
+              className="w-full py-3 border border-dashed border-zinc-700 hover:border-gold-500/50 text-zinc-500 hover:text-gold-400 rounded-2xl text-sm flex items-center justify-center gap-2 transition-colors"
+            >
+              <Plus size={16} /> Añadir tarjeta
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* Seguridad */}
+      {tab === 'seguridad' && (
+        <div className="space-y-4">
+          <form onSubmit={guardar} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Lock size={16} className="text-gold-400" />
+              <h3 className="text-zinc-100 font-semibold text-sm">Cambiar contraseña</h3>
+            </div>
+            {[
+              { key: 'actual',    label: 'Contraseña actual' },
+              { key: 'nueva',     label: 'Nueva contraseña' },
+              { key: 'confirmar', label: 'Confirmar nueva contraseña' },
+            ].map(({ key, label }) => (
+              <div key={key}>
+                <label className="text-zinc-500 text-xs block mb-1.5">{label}</label>
+                <input type="password" placeholder="••••••••" value={pass[key]}
+                  onChange={e => setPass(p => ({ ...p, [key]: e.target.value }))}
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+                />
+              </div>
+            ))}
+            <button type="submit" className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl text-sm transition-colors">
+              Actualizar contraseña
+            </button>
+          </form>
+
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <Shield size={16} className="text-gold-400" />
+              <h3 className="text-zinc-100 font-semibold text-sm">Sesiones activas</h3>
+            </div>
+            {[
+              { dispositivo: 'Chrome · Windows', lugar: 'Madrid, España', activo: true },
+              { dispositivo: 'Safari · iPhone',  lugar: 'Madrid, España', activo: false },
+            ].map((s, i) => (
+              <div key={i} className="flex items-center justify-between py-3 border-t border-zinc-800 first:border-t-0">
+                <div>
+                  <p className="text-zinc-100 text-sm">{s.dispositivo}</p>
+                  <p className="text-zinc-500 text-xs">{s.lugar}</p>
+                </div>
+                {s.activo
+                  ? <span className="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full">Actual</span>
+                  : <button className="text-xs text-red-400 hover:text-red-300">Cerrar</button>
+                }
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-zinc-900 border border-red-500/20 rounded-2xl p-6">
+            <div className="flex items-center gap-2 mb-1">
+              <LogOut size={16} className="text-red-400" />
+              <h3 className="text-zinc-100 font-semibold text-sm">Zona de peligro</h3>
+            </div>
+            <p className="text-zinc-500 text-xs mb-4">Estas acciones son irreversibles.</p>
+            <div className="flex flex-col gap-3">
+              <button
+                type="button"
+                onClick={cerrarSesion}
+                className="w-full px-4 py-2 border border-zinc-700 text-zinc-200 hover:bg-zinc-800 rounded-xl text-sm transition-colors"
+              >
+                Cerrar sesión
+              </button>
+              <button className="w-full px-4 py-2 border border-red-500/40 text-red-400 hover:bg-red-500/10 rounded-xl text-sm transition-colors">
+                Eliminar cuenta
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Notificaciones */}
+      {tab === 'notificaciones' && (
+        <form onSubmit={guardar} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+          <div className="flex items-center gap-2 mb-5">
+            <Bell size={16} className="text-gold-400" />
+            <h3 className="text-zinc-100 font-semibold text-sm">Preferencias de notificación</h3>
+          </div>
+          <div className="divide-y divide-zinc-800">
+            {[
+              { key: 'pedidos',    label: 'Estado de pedidos',   desc: 'Cuando tu pedido esté listo o en camino' },
+              { key: 'entradas',   label: 'Entradas y reservas', desc: 'Confirmaciones y recordatorios' },
+              { key: 'vip',        label: 'Salas VIP',           desc: 'Disponibilidad y ofertas de salas' },
+              { key: 'ofertas',    label: 'Promociones',         desc: 'Descuentos y eventos especiales' },
+              { key: 'newsletter', label: 'Newsletter',          desc: 'Novedades mensuales de Flex' },
+            ].map(({ key, label, desc }) => (
+              <div key={key} className="flex items-center justify-between py-4">
+                <div>
+                  <p className="text-zinc-100 text-sm font-medium">{label}</p>
+                  <p className="text-zinc-500 text-xs mt-0.5">{desc}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setNotifs(n => ({ ...n, [key]: !n[key] }))}
+                  className={`relative w-10 h-6 rounded-full transition-colors shrink-0 ml-4 ${notifs[key] ? 'bg-gold-500' : 'bg-zinc-700'}`}
+                >
+                  <span className={`absolute top-1 left-1 w-4 h-4 rounded-full bg-white transition-transform ${notifs[key] ? 'translate-x-4' : 'translate-x-0'}`} />
+                </button>
+              </div>
+            ))}
+          </div>
+          <button type="submit" className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl text-sm transition-colors mt-4">
+            Guardar preferencias
+          </button>
+        </form>
+      )}
+    </div>
+  )
+}
+</file>
+
+<file path="src/app/porteros/page.jsx">
+'use client'
+
+import { useState } from 'react'
+import { QrCode, CheckCircle, XCircle, Search } from 'lucide-react'
+
+const ENTRADAS_VALIDADAS = [
+  { id: 1, codigo: 'FLEX-2C7B', nombre: 'Alex García',  tipo: 'Pista Principal', hora: '23:01', ok: true  },
+  { id: 2, codigo: 'FLEX-9A3F', nombre: 'María López',  tipo: 'Zona VIP',        hora: '23:04', ok: true  },
+  { id: 3, codigo: 'FLEX-4D8X', nombre: 'Pedro Gil',    tipo: 'Pista Principal', hora: '23:09', ok: false },
+  { id: 4, codigo: 'FLEX-7E2Q', nombre: 'Sara Martín',  tipo: 'Pista Principal', hora: '23:15', ok: true  },
+]
+
+export default function PaginaPorteros() {
+  const [codigo, setCodigo] = useState('')
+  const [resultado, setResultado] = useState(null)
+  const [historial, setHistorial] = useState(ENTRADAS_VALIDADAS)
+
+  function escanear() {
+    if (!codigo.trim()) return
+    const valido = codigo.startsWith('FLEX-') && codigo.length === 9
+    const entrada = {
+      id: Date.now(),
+      codigo: codigo.toUpperCase(),
+      nombre: valido ? 'Cliente verificado' : 'Desconocido',
+      tipo: valido ? 'Pista Principal' : '—',
+      hora: new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }),
+      ok: valido,
+    }
+    setResultado(entrada)
+    setHistorial(prev => [entrada, ...prev])
+    setTimeout(() => setResultado(null), 4000)
+    setCodigo('')
+  }
+
+  return (
+    <div className="p-4 sm:p-8">
+      <div className="mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">Panel de Porteros</h1>
+        <p className="text-zinc-500 text-sm mt-1">Validación de entradas en puerta</p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Scanner */}
+        <div className="space-y-6">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 flex flex-col items-center gap-6">
+            <div className="w-48 h-48 bg-zinc-800 rounded-2xl flex items-center justify-center border-2 border-dashed border-zinc-700">
+              <QrCode size={80} className="text-zinc-600" />
+            </div>
+            <p className="text-zinc-500 text-sm text-center">
+              Apunta la cámara al código QR<br />de la entrada del cliente
+            </p>
+            <div className="w-full flex gap-2">
+              <input
+                placeholder="Código manual (ej. FLEX-2C7B)"
+                value={codigo}
+                onChange={e => setCodigo(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && escanear()}
+                className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500"
+              />
+              <button
+                onClick={escanear}
+                className="px-4 py-2 bg-gold-500 hover:bg-gold-600 text-zinc-950 text-sm font-semibold rounded-lg"
+              >
+                <Search size={16} />
+              </button>
+            </div>
+          </div>
+
+          {/* Resultado */}
+          {resultado && (
+            <div className={`rounded-2xl border p-6 flex items-center gap-4 ${
+              resultado.ok
+                ? 'bg-emerald-500/10 border-emerald-500/40'
+                : 'bg-red-500/10 border-red-500/40'
+            }`}>
+              {resultado.ok
+                ? <CheckCircle size={40} className="text-emerald-400 shrink-0" />
+                : <XCircle size={40} className="text-red-400 shrink-0" />
+              }
+              <div>
+                <p className={`text-xl font-bold ${resultado.ok ? 'text-emerald-400' : 'text-red-400'}`}>
+                  {resultado.ok ? 'ENTRADA VÁLIDA' : 'ENTRADA INVÁLIDA'}
+                </p>
+                <p className="text-zinc-300 text-sm mt-0.5">{resultado.nombre}</p>
+                <p className="text-zinc-500 text-xs">{resultado.tipo} · {resultado.codigo}</p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Historial */}
+        <div>
+          <h2 className="text-lg font-semibold text-zinc-100 mb-4">Últimas validaciones</h2>
+          <div className="space-y-2">
+            {historial.map(e => (
+              <div key={e.id} className="bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 flex items-center gap-4">
+                {e.ok
+                  ? <CheckCircle size={18} className="text-emerald-400 shrink-0" />
+                  : <XCircle size={18} className="text-red-400 shrink-0" />
+                }
+                <div className="flex-1 min-w-0">
+                  <p className="text-zinc-100 text-sm font-medium truncate">{e.nombre}</p>
+                  <p className="text-zinc-500 text-xs">{e.tipo}</p>
+                </div>
+                <div className="text-right shrink-0">
+                  <p className="text-zinc-500 text-xs font-mono">{e.codigo}</p>
+                  <p className="text-zinc-600 text-xs">{e.hora}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="src/app/register/page.jsx">
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import FlexLogo from '@/components/FlexLogo'
+import { createClient } from '@/lib/supabase/client'
+
+export default function PaginaRegister() {
+  const router = useRouter()
+  const [form, setForm] = useState({ nombre: '', email: '', password: '', confirmar: '' })
+  const [error, setError] = useState('')
+  const [cargando, setCargando] = useState(false)
+  const set = (k) => (e) => setForm((prev) => ({ ...prev, [k]: e.target.value }))
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setError('')
+
+    if (form.password !== form.confirmar) {
+      setError('Las contrasenas no coinciden.')
+      return
+    }
+
+    if (form.password.length < 8) {
+      setError('La contrasena debe tener al menos 8 caracteres.')
+      return
+    }
+
+    setCargando(true)
+    const supabase = createClient()
+
+    const { error: authError } = await supabase.auth.signUp({
+      email: form.email,
+      password: form.password,
+      options: { data: { nombre: form.nombre } },
+    })
+
+    setCargando(false)
+
+    if (authError) {
+      setError(authError.message)
+      return
+    }
+
+    router.push('/login?registered=1')
+  }
+
+  return (
+    <div className="min-h-screen flex">
+      <div className="hidden lg:block lg:w-1/2 relative overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=1200&auto=format&fit=crop&q=80"
+          alt="Flex Club"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-zinc-950/60 to-zinc-950/10" />
+        <div className="absolute bottom-12 left-10 right-10">
+          <p className="text-white/80 text-xl font-light italic leading-relaxed">
+            &quot;Unete a la experiencia<br />mas exclusiva de la ciudad.&quot;
+          </p>
+        </div>
+      </div>
+
+      <div className="flex-1 flex flex-col justify-center items-center px-8 py-12 bg-zinc-950">
+        <div className="lg:hidden absolute inset-0 -z-10">
+          <img
+            src="https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=800&auto=format&fit=crop&q=80"
+            alt=""
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+
+        <div className="w-full max-w-sm">
+          <div className="mb-10 flex justify-center">
+            <FlexLogo className="h-12 w-auto" />
+          </div>
+
+          <h1 className="text-2xl font-bold text-zinc-100 mb-1">Crea tu cuenta</h1>
+          <p className="text-zinc-500 text-sm mb-8">Empieza a disfrutar de Flex esta noche</p>
+
+          {error && (
+            <div className="bg-red-500/10 border border-red-500/30 text-red-400 text-sm rounded-xl px-4 py-3 mb-4">
+              {error}
+            </div>
+          )}
+
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            <div>
+              <label className="text-zinc-500 text-xs block mb-1.5">Nombre completo</label>
+              <input
+                type="text"
+                placeholder="Alex Garcia"
+                value={form.nombre}
+                onChange={set('nombre')}
+                required
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+              />
+            </div>
+            <div>
+              <label className="text-zinc-500 text-xs block mb-1.5">Email</label>
+              <input
+                type="email"
+                placeholder="tu@email.com"
+                value={form.email}
+                onChange={set('email')}
+                required
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+              />
+            </div>
+            <div>
+              <label className="text-zinc-500 text-xs block mb-1.5">Contrasena</label>
+              <input
+                type="password"
+                placeholder="Minimo 8 caracteres"
+                value={form.password}
+                onChange={set('password')}
+                required
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+              />
+            </div>
+            <div>
+              <label className="text-zinc-500 text-xs block mb-1.5">Confirmar contrasena</label>
+              <input
+                type="password"
+                placeholder="Minimo 8 caracteres"
+                value={form.confirmar}
+                onChange={set('confirmar')}
+                required
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+              />
+            </div>
+
+            <p className="text-zinc-600 text-xs pt-1">
+              Al registrarte aceptas los{' '}
+              <a href="#" className="text-gold-500 hover:text-gold-400">Terminos y condiciones</a>
+              {' '}y la{' '}
+              <a href="#" className="text-gold-500 hover:text-gold-400">Politica de privacidad</a>.
+            </p>
+
+            <button
+              type="submit"
+              disabled={cargando}
+              className="w-full py-3 bg-gold-500 hover:bg-gold-600 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl transition-colors"
+            >
+              {cargando ? 'Creando cuenta...' : 'Crear cuenta'}
+            </button>
+          </form>
+
+          <p className="text-center text-zinc-500 text-sm mt-8">
+            Ya tienes cuenta?{' '}
+            <Link href="/login" className="text-gold-400 hover:text-gold-300 font-medium">
+              Inicia sesion
+            </Link>
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="src/app/staff/page.jsx">
+'use client'
+
+import { useState } from 'react'
+import { CheckCircle, Clock, ChefHat } from 'lucide-react'
+
+const PEDIDOS_INIT = [
+  {
+    id: 1, mesa: 'Mesa 3', cliente: 'María López', hora: '23:14',
+    estado: 'pendiente',
+    items: [{ nombre: 'Gin Tonic Premium', cantidad: 2 }, { nombre: 'Nachos', cantidad: 1 }],
+  },
+  {
+    id: 2, mesa: 'Mesa 7', cliente: 'Alex García', hora: '23:21',
+    estado: 'pendiente',
+    items: [{ nombre: 'Cerveza Artesana', cantidad: 3 }, { nombre: 'Patatas bravas', cantidad: 2 }],
+  },
+  {
+    id: 3, mesa: 'Sala Roja', cliente: 'Carlos Ruiz', hora: '23:05',
+    estado: 'completado',
+    items: [{ nombre: 'Vino tinto', cantidad: 1 }, { nombre: 'Tabla de quesos', cantidad: 1 }],
+  },
+  {
+    id: 4, mesa: 'Mesa 1', cliente: 'Laura Sanz', hora: '23:30',
+    estado: 'preparando',
+    items: [{ nombre: 'Mojito', cantidad: 4 }],
+  },
+  {
+    id: 5, mesa: 'Mesa 12', cliente: 'Pedro Gil', hora: '22:58',
+    estado: 'completado',
+    items: [{ nombre: 'Hamburguesa Flex', cantidad: 2 }, { nombre: 'Coca-Cola', cantidad: 2 }],
+  },
+]
+
+const ESTADOS = {
+  pendiente:  { label: 'Pendiente',  color: 'text-amber-400',  bg: 'bg-amber-500/20',  border: 'border-amber-500/30',  icon: Clock },
+  preparando: { label: 'Preparando', color: 'text-blue-400',   bg: 'bg-blue-500/20',   border: 'border-blue-500/30',   icon: ChefHat },
+  completado: { label: 'Completado', color: 'text-emerald-400',bg: 'bg-emerald-500/20',border: 'border-zinc-800',       icon: CheckCircle },
+}
+
+const SIGUIENTE = { pendiente: 'preparando', preparando: 'completado' }
+
+const BOTONES = {
+  pendiente:  { label: 'Preparar',  clases: 'bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 border-blue-500/30' },
+  preparando: { label: 'Entregar',  clases: 'bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border-emerald-500/30' },
+}
+
+const FILTROS = ['todos', 'pendiente', 'preparando', 'completado']
+
+export default function PaginaStaff() {
+  const [pedidos, setPedidos] = useState(PEDIDOS_INIT)
+  const [filtro, setFiltro] = useState('todos')
+
+  function avanzar(id) {
+    setPedidos(prev => prev.map(p =>
+      p.id === id && SIGUIENTE[p.estado]
+        ? { ...p, estado: SIGUIENTE[p.estado] }
+        : p
+    ))
+  }
+
+  const pedidosFiltrados = filtro === 'todos' ? pedidos : pedidos.filter(p => p.estado === filtro)
+  const pendientes  = pedidos.filter(p => p.estado === 'pendiente').length
+  const preparando  = pedidos.filter(p => p.estado === 'preparando').length
+  const completados = pedidos.filter(p => p.estado === 'completado').length
+
+  return (
+    <div className="p-4 sm:p-8">
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+        <div>
+          <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">Panel de Staff</h1>
+          <p className="text-zinc-500 text-sm mt-1">Gestión de pedidos en tiempo real</p>
+        </div>
+        {pendientes > 0 && (
+          <div className="bg-amber-500/20 border border-amber-500/40 text-amber-400 text-sm px-4 py-2 rounded-xl self-start">
+            {pendientes} nuevo{pendientes > 1 ? 's' : ''} pedido{pendientes > 1 ? 's' : ''}
+          </div>
+        )}
+      </div>
+
+      {/* Stats */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+        <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-4">
+          <p className="text-zinc-500 text-xs">Total</p>
+          <p className="text-2xl font-bold text-zinc-100 mt-1">{pedidos.length}</p>
+        </div>
+        <div className="bg-zinc-900 border border-amber-500/20 rounded-xl p-4">
+          <p className="text-zinc-500 text-xs">Pendientes</p>
+          <p className="text-2xl font-bold text-amber-400 mt-1">{pendientes}</p>
+        </div>
+        <div className="bg-zinc-900 border border-blue-500/20 rounded-xl p-4">
+          <p className="text-zinc-500 text-xs">Preparando</p>
+          <p className="text-2xl font-bold text-blue-400 mt-1">{preparando}</p>
+        </div>
+        <div className="bg-zinc-900 border border-emerald-500/20 rounded-xl p-4">
+          <p className="text-zinc-500 text-xs">Completados</p>
+          <p className="text-2xl font-bold text-emerald-400 mt-1">{completados}</p>
+        </div>
+      </div>
+
+      {/* Filtros */}
+      <div className="flex gap-2 mb-6 flex-wrap">
+        {FILTROS.map(f => (
+          <button
+            key={f}
+            onClick={() => setFiltro(f)}
+            className={`px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
+              filtro === f ? 'bg-gold-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+            }`}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+
+      {/* Lista pedidos */}
+      <div className="space-y-3">
+        {pedidosFiltrados.map(pedido => {
+          const estado = ESTADOS[pedido.estado]
+          const IconEstado = estado.icon
+          const boton = BOTONES[pedido.estado]
+
+          return (
+            <div
+              key={pedido.id}
+              className={`bg-zinc-900 border ${estado.border} rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4`}
+            >
+              {/* Icono estado */}
+              <div className={`shrink-0 ${estado.color}`}>
+                <IconEstado size={24} />
+              </div>
+
+              {/* Info */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap mb-1">
+                  <span className="text-zinc-100 font-semibold">{pedido.mesa}</span>
+                  <span className="text-zinc-500 text-sm">·</span>
+                  <span className="text-zinc-400 text-sm">{pedido.cliente}</span>
+                  <span className={`ml-auto text-xs px-2 py-0.5 rounded-full font-medium ${estado.bg} ${estado.color}`}>
+                    {estado.label}
+                  </span>
+                </div>
+                <p className="text-zinc-500 text-sm">
+                  {pedido.items.map(i => `${i.cantidad}× ${i.nombre}`).join(' · ')}
+                </p>
+                <p className="text-zinc-600 text-xs mt-1">{pedido.hora}</p>
+              </div>
+
+              {/* Botón acción */}
+              {boton && (
+                <button
+                  onClick={() => avanzar(pedido.id)}
+                  className={`shrink-0 flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border transition-colors ${boton.clases}`}
+                >
+                  {pedido.estado === 'pendiente'  && <ChefHat size={15} />}
+                  {pedido.estado === 'preparando' && <CheckCircle size={15} />}
+                  {boton.label}
+                </button>
+              )}
+              {pedido.estado === 'completado' && (
+                <span className="shrink-0 text-xs text-emerald-600 font-medium">Entregado</span>
+              )}
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="src/app/vip/page.jsx">
+'use client'
+
+import { useState } from 'react'
+import { Crown, Users, Clock, CheckCircle } from 'lucide-react'
+
+const SALAS = [
+  {
+    id: 'roja',
+    nombre: 'Sala Roja',
+    color: 'from-red-900/40 to-red-800/20',
+    borde: 'border-red-700/40',
+    acento: 'text-red-400',
+    badge: 'bg-red-500/20 text-red-400',
+    capacidad: 10,
+    precio_hora: 150,
+    descripcion: 'Ambiente íntimo con decoración premium. Perfecta para grupos reducidos.',
+    disponible: true,
+  },
+  {
+    id: 'negra',
+    nombre: 'Sala Negra',
+    color: 'from-zinc-800/60 to-zinc-900/40',
+    borde: 'border-zinc-600/40',
+    acento: 'text-zinc-300',
+    badge: 'bg-zinc-600/30 text-zinc-400',
+    capacidad: 15,
+    precio_hora: 200,
+    descripcion: 'La sala más exclusiva. Sonido privado y servicio dedicado.',
+    disponible: false,
+  },
+  {
+    id: 'dorada',
+    nombre: 'Sala Dorada',
+    color: 'from-yellow-900/40 to-amber-800/20',
+    borde: 'border-gold-500/40',
+    acento: 'text-gold-400',
+    badge: 'bg-gold-500/20 text-gold-400',
+    capacidad: 20,
+    precio_hora: 300,
+    descripcion: 'La experiencia Flex definitiva. Diseño dorado, bar privado y DJ dedicado.',
+    disponible: true,
+  },
+]
+
+const HORAS = ['20:00', '21:00', '22:00', '23:00', '00:00', '01:00', '02:00']
+const DURACIONES = ['1 hora', '2 horas', '3 horas', '4 horas']
+
+export default function PaginaVIP() {
+  const [salaSeleccionada, setSalaSeleccionada] = useState(null)
+  const [fecha, setFecha] = useState('')
+  const [hora, setHora] = useState('')
+  const [duracion, setDuracion] = useState('')
+  const [reservado, setReservado] = useState(false)
+
+  const sala = SALAS.find(s => s.id === salaSeleccionada)
+  const horas = duracion ? parseInt(duracion) : 0
+  const subtotal = sala ? sala.precio_hora * horas : 0
+  const puedeReservar = salaSeleccionada && fecha && hora && duracion && sala?.disponible
+
+  function reservar() {
+    if (!puedeReservar) return
+    setReservado(true)
+  }
+
+  if (reservado) {
+    return (
+      <div className="p-8 flex flex-col items-center justify-center min-h-full gap-6">
+        <CheckCircle size={64} className="text-emerald-400" />
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-zinc-100">¡Reserva confirmada!</h2>
+          <p className="text-zinc-400 mt-2">{sala.nombre} · {fecha} · {hora} · {duracion}</p>
+          <p className="text-gold-400 font-bold text-xl mt-2">{subtotal} € total</p>
+        </div>
+        <button
+          onClick={() => { setReservado(false); setSalaSeleccionada(null); setFecha(''); setHora(''); setDuracion('') }}
+          className="px-6 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-100 rounded-xl text-sm"
+        >
+          Nueva reserva
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <div className="p-4 sm:p-8">
+      <div className="mb-8">
+        <h1 className="text-xl sm:text-2xl font-bold text-zinc-100">Salas VIP</h1>
+        <p className="text-zinc-500 text-sm mt-1">Reserva una sala privada para tu grupo</p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+        {SALAS.map(s => (
+          <button
+            key={s.id}
+            onClick={() => s.disponible && setSalaSeleccionada(s.id)}
+            disabled={!s.disponible}
+            className={`bg-linear-to-br ${s.color} border ${s.borde} rounded-2xl p-6 text-left transition-all ${
+              salaSeleccionada === s.id
+                ? 'ring-2 ring-gold-500 scale-[1.02]'
+                : s.disponible ? 'hover:scale-[1.01] cursor-pointer' : 'opacity-50 cursor-not-allowed'
+            }`}
+          >
+            <div className="flex items-start justify-between mb-4">
+              <Crown size={24} className={s.acento} />
+              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                s.disponible ? s.badge : 'bg-zinc-700 text-zinc-500'
+              }`}>
+                {s.disponible ? 'Disponible' : 'Ocupada'}
+              </span>
+            </div>
+            <h3 className={`text-lg font-bold mb-1 ${s.acento}`}>{s.nombre}</h3>
+            <p className="text-zinc-400 text-xs mb-4 leading-relaxed">{s.descripcion}</p>
+            <div className="flex items-center gap-4 text-zinc-500 text-xs">
+              <span className="flex items-center gap-1"><Users size={12} /> Hasta {s.capacidad} personas</span>
+              <span className="flex items-center gap-1"><Clock size={12} /> {s.precio_hora} €/h</span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {/* Formulario reserva */}
+      <div className="max-w-lg">
+        <h2 className="text-lg font-semibold text-zinc-100 mb-4">
+          {salaSeleccionada ? `Reservar ${sala.nombre}` : 'Selecciona una sala'}
+        </h2>
+
+        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-4">
+          <div>
+            <label className="text-zinc-500 text-xs block mb-1.5">Fecha</label>
+            <input
+              type="date"
+              value={fecha}
+              onChange={e => setFecha(e.target.value)}
+              disabled={!salaSeleccionada}
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500 disabled:opacity-40"
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="text-zinc-500 text-xs block mb-1.5">Hora de inicio</label>
+              <select
+                value={hora}
+                onChange={e => setHora(e.target.value)}
+                disabled={!salaSeleccionada}
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500 disabled:opacity-40"
+              >
+                <option value="">— Elegir —</option>
+                {HORAS.map(h => <option key={h}>{h}</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="text-zinc-500 text-xs block mb-1.5">Duración</label>
+              <select
+                value={duracion}
+                onChange={e => setDuracion(e.target.value)}
+                disabled={!salaSeleccionada}
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500 disabled:opacity-40"
+              >
+                <option value="">— Elegir —</option>
+                {DURACIONES.map(d => <option key={d}>{d}</option>)}
+              </select>
+            </div>
+          </div>
+
+          {subtotal > 0 && (
+            <div className="flex justify-between items-center pt-2 border-t border-zinc-800">
+              <span className="text-zinc-400 text-sm">Total estimado</span>
+              <span className="text-gold-400 font-bold text-lg">{subtotal} €</span>
+            </div>
+          )}
+
+          <button
+            onClick={reservar}
+            disabled={!puedeReservar}
+            className="w-full py-2.5 bg-gold-500 hover:bg-gold-600 disabled:opacity-30 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl transition-colors"
+          >
+            Confirmar reserva
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/FlexLogo.jsx">
+export default function FlexLogo({ className = '' }) {
+  return (
+    <svg
+      viewBox="0 0 160 60"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="FLEX Live Sessions"
+    >
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stopColor="#f0c040" />
+          <stop offset="100%" stopColor="#a87010" />
+        </linearGradient>
+      </defs>
+
+      {/* FLEX */}
+      <text
+        x="2"
+        y="42"
+        fontFamily="Georgia, serif"
+        fontSize="44"
+        fontWeight="bold"
+        fontStyle="italic"
+        fill="url(#g1)"
+        letterSpacing="1"
+      >FLEX</text>
+
+      {/* Línea separadora */}
+      <line x1="2" y1="48" x2="158" y2="48" stroke="#a87010" strokeWidth="0.7" opacity="0.7" />
+
+      {/* LIVE SESSIONS */}
+      <text
+        x="2"
+        y="58"
+        fontFamily="Georgia, serif"
+        fontSize="9"
+        letterSpacing="4"
+        fill="#c8960c"
+        opacity="0.9"
+      >LIVE SESSIONS</text>
+    </svg>
+  )
+}
+</file>
+
+<file path="src/components/Shell.jsx">
+'use client'
+
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import {
+  ShoppingCart, Crown, User, UserCircle, LayoutDashboard,
+  ShieldCheck, QrCode, X, LayoutGrid,
+} from 'lucide-react'
+import Sidebar from '@/components/Sidebar'
+import { useSesionStore } from '@/store/sesionStore'
+
+const AUTH_ROUTES = ['/login', '/register']
+
+const RUTA_POR_ROL = {
+  cliente: '/'
+  , staff: '/staff'
+  , portero: '/porteros'
+  , admin: '/admin'
+}
+
+const RUTAS_POR_ROL = {
+  cliente: ['/','/vip','/mi-area','/perfil'],
+  staff:   ['/staff','/perfil'],
+  portero: ['/porteros','/perfil'],
+  admin:   ['/','/vip','/mi-area','/perfil','/staff','/porteros','/admin'],
+}
+
+const NAV_CLIENTE = [
+  { icon: ShoppingCart, label: 'Pedir',   href: '/',        roles: ['cliente', 'admin'] },
+  { icon: Crown,        label: 'VIP',     href: '/vip',     roles: ['cliente', 'admin'] },
+  { icon: User,         label: 'Mi área', href: '/mi-area', roles: ['cliente', 'admin'] },
+  { icon: UserCircle,   label: 'Perfil',  href: '/perfil',  roles: ['cliente', 'staff', 'portero', 'admin'] },
+]
+
+const NAV_GESTION = [
+  { icon: ShieldCheck,     label: 'Staff',    href: '/staff',    roles: ['staff', 'admin'] },
+  { icon: QrCode,          label: 'Porteros', href: '/porteros', roles: ['portero', 'admin'] },
+  { icon: LayoutDashboard, label: 'Admin',    href: '/admin',    roles: ['admin'] },
+]
+
+function BottomNav() {
+  const pathname = usePathname()
+  const { rol } = useSesionStore()
+  const [gestionAbierta, setGestionAbierta] = useState(false)
+
+  const clienteItems = NAV_CLIENTE.filter(i => i.roles.includes(rol ?? 'cliente'))
+  const gestionItems = NAV_GESTION.filter(i => i.roles.includes(rol ?? 'cliente'))
+  const gestionActiva = gestionItems.some(i => i.href === pathname)
+
+  return (
+    <>
+      {/* Panel gestión */}
+      {gestionAbierta && (
+        <>
+          <div className="lg:hidden fixed inset-0 z-30" onClick={() => setGestionAbierta(false)} />
+          <div className="lg:hidden fixed bottom-20 inset-x-4 z-40 bg-zinc-900 border border-zinc-700 rounded-2xl p-2 shadow-2xl">
+            <p className="text-zinc-600 text-xs font-semibold uppercase tracking-wider px-3 py-2">Gestión</p>
+            <div className="grid grid-cols-3 gap-1">
+              {gestionItems.map(({ icon: Icon, label, href }) => {
+                const activo = pathname === href
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={() => setGestionAbierta(false)}
+                    className={`flex flex-col items-center gap-1.5 py-3 rounded-xl transition-colors ${
+                      activo ? 'bg-gold-500/20 text-gold-400' : 'text-zinc-400 hover:bg-zinc-800'
+                    }`}
+                  >
+                    <Icon size={22} />
+                    <span className="text-[11px] font-medium">{label}</span>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* Barra inferior */}
+      <nav className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-zinc-950/95 backdrop-blur-md border-t border-zinc-800 flex items-end">
+        {/* Los 4 de cliente */}
+        {clienteItems.map(({ icon: Icon, label, href }) => {
+          const activo = pathname === href
+          return (
+            <Link key={href} href={href} className="flex-1 flex flex-col items-center py-3 gap-1">
+              <Icon size={21} className={activo ? 'text-gold-400' : 'text-zinc-600'} />
+              <span className={`text-[10px] font-medium ${activo ? 'text-gold-400' : 'text-zinc-600'}`}>{label}</span>
+            </Link>
+          )
+        })}
+
+        {/* Botón gestión — central elevado */}
+        <button
+          onClick={() => setGestionAbierta(v => !v)}
+          className="flex-1 flex flex-col items-center -translate-y-3 gap-1"
+        >
+          <span className={`w-13 h-13 rounded-full flex items-center justify-center shadow-lg transition-colors ${
+            gestionActiva || gestionAbierta ? 'bg-gold-500' : 'bg-zinc-800 hover:bg-zinc-700'
+          }`}>
+            {gestionAbierta
+              ? <X size={22} className={gestionActiva || gestionAbierta ? 'text-zinc-950' : 'text-zinc-300'} />
+              : <LayoutGrid size={22} className={gestionActiva || gestionAbierta ? 'text-zinc-950' : 'text-zinc-300'} />
+            }
+          </span>
+          <span className={`text-[10px] font-medium ${gestionActiva || gestionAbierta ? 'text-gold-400' : 'text-zinc-600'}`}>
+            Gestión
+          </span>
+        </button>
+      </nav>
+    </>
+  )
+}
+
+export default function Shell({ children }) {
+  const router = useRouter()
+  const pathname = usePathname()
+  const { usuario, rol, cargando } = useSesionStore()
+
+  useEffect(() => {
+    if (!cargando) {
+      if (!usuario && !AUTH_ROUTES.includes(pathname)) {
+        router.replace('/login')
+        return
+      }
+
+      if (usuario && rol && AUTH_ROUTES.includes(pathname)) {
+        router.replace(RUTA_POR_ROL[rol] ?? '/')
+        return
+      }
+
+      if (usuario && rol && !RUTAS_POR_ROL[rol]?.includes(pathname) && !AUTH_ROUTES.includes(pathname)) {
+        router.replace(RUTA_POR_ROL[rol] ?? '/')
+      }
+    }
+  }, [cargando, usuario, rol, pathname, router])
+
+  if (AUTH_ROUTES.includes(pathname)) return <>{children}</>
+  if (cargando || !usuario) return null
+
+  return (
+    <div className="flex h-screen overflow-hidden">
+      {/* Sidebar solo desktop */}
+      <div className="hidden lg:block">
+        <Sidebar />
+      </div>
+
+      {/* Área principal */}
+      <div className="flex-1 flex flex-col overflow-hidden min-w-0">
+        {/* Header móvil con logo + enlaces de acceso */}
+        <header className="lg:hidden px-4 py-3 bg-zinc-950 border-b border-zinc-800/60 shrink-0">
+          <div className="flex items-center justify-between gap-3">
+            <span className="font-display italic font-bold text-gold-400 text-2xl tracking-widest">FLEX</span>
+            <div className="flex items-center gap-2">
+              <Link href="/login" className="text-xs font-semibold text-zinc-100 px-3 py-2 rounded-full border border-zinc-700 hover:bg-zinc-800 transition-colors">
+                Login
+              </Link>
+              <Link href="/register" className="text-xs font-semibold text-zinc-950 bg-gold-500 px-3 py-2 rounded-full hover:bg-gold-600 transition-colors">
+                Registro
+              </Link>
+            </div>
+          </div>
+        </header>
+
+        <main className="flex-1 overflow-y-auto pb-20 lg:pb-0">
+          {children}
+        </main>
+      </div>
+
+      {/* Bottom nav móvil */}
+      <BottomNav />
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/Sidebar.jsx">
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import {
+  ShoppingCart, Crown, User,
+  ShieldCheck, QrCode, LayoutDashboard, X,
+  Camera, Lock, Bell, Shield, LogOut, CheckCircle, ChevronUp,
+} from 'lucide-react'
+import { useSesionStore } from '@/store/sesionStore'
+
+const NAV_CLIENTE = [
+  { icon: ShoppingCart, label: 'Pedir',     href: '/',        roles: ['cliente', 'admin'] },
+  { icon: Crown,        label: 'Salas VIP', href: '/vip',     roles: ['cliente', 'admin'] },
+  { icon: User,         label: 'Mi área',   href: '/mi-area', roles: ['cliente', 'admin'] },
+]
+
+const NAV_GENERAL = [
+  { icon: User,         label: 'Perfil',    href: '/perfil',  roles: ['cliente', 'staff', 'portero', 'admin'] },
+]
+
+const NAV_GESTION = [
+  { icon: ShieldCheck,     label: 'Panel Staff', href: '/staff',    roles: ['staff', 'admin'] },
+  { icon: QrCode,          label: 'Porteros',    href: '/porteros', roles: ['portero', 'admin'] },
+  { icon: LayoutDashboard, label: 'Admin',       href: '/admin',    roles: ['admin'] },
+]
+
+const TABS_PERFIL = [
+  { id: 'personal',       label: 'Personal' },
+  { id: 'seguridad',      label: 'Seguridad' },
+  { id: 'notificaciones', label: 'Avisos' },
+]
+
+function NavGroup({ title, items, pathname, onClose }) {
+  return (
+    <div className="mb-2">
+      <p className="px-3 mb-1 text-xs font-semibold text-zinc-600 uppercase tracking-wider">{title}</p>
+      {items.map(({ icon: Icon, label, href }) => {
+        const activo = pathname === href
+        return (
+          <Link
+            key={href}
+            href={href}
+            onClick={onClose}
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+              activo
+                ? 'bg-gold-500/20 text-gold-400'
+                : 'text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100'
+            }`}
+          >
+            <Icon size={18} />
+            {label}
+          </Link>
+        )
+      })}
+    </div>
+  )
+}
+
+function ModalPerfil({ onClose }) {
+  const [tab, setTab]       = useState('personal')
+  const [guardado, setGuardado] = useState(false)
+  const [avatar, setAvatar] = useState(null)
+
+  const [perfil, setPerfil] = useState({
+    nombre: 'Alex García', email: 'alex@flex.es',
+    telefono: '+34 612 345 678', fechaNac: '1995-08-14',
+  })
+  const [pass, setPass]   = useState({ actual: '', nueva: '', confirmar: '' })
+  const [notifs, setNotifs] = useState({
+    pedidos: true, entradas: true, ofertas: false, vip: true, newsletter: false,
+  })
+
+  function guardar(e) {
+    e.preventDefault()
+    setGuardado(true)
+    setTimeout(() => setGuardado(false), 2500)
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/70" onClick={onClose} />
+
+      {/* Panel */}
+      <div className="relative bg-zinc-900 border border-zinc-800 rounded-t-2xl sm:rounded-2xl w-full sm:max-w-md max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+        {/* Cabecera */}
+        <div className="flex items-center justify-between px-6 py-5 border-b border-zinc-800 shrink-0">
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <div className="w-12 h-12 rounded-full bg-gold-500/20 border-2 border-gold-500/40 overflow-hidden flex items-center justify-center">
+                {avatar
+                  ? <img src={avatar} alt="Avatar" className="w-full h-full object-cover" />
+                  : <span className="text-xl font-bold text-gold-400">A</span>
+                }
+              </div>
+              <label className="absolute -bottom-0.5 -right-0.5 w-5 h-5 bg-gold-500 hover:bg-gold-600 rounded-full flex items-center justify-center cursor-pointer transition-colors">
+                <Camera size={10} className="text-zinc-950" />
+                <input type="file" accept="image/*" className="hidden" onChange={e => {
+                  const f = e.target.files?.[0]
+                  if (f) setAvatar(URL.createObjectURL(f))
+                }} />
+              </label>
+            </div>
+            <div>
+              <p className="text-zinc-100 font-semibold text-sm">{perfil.nombre}</p>
+              <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full">Cliente</span>
+            </div>
+          </div>
+          <button onClick={onClose} className="text-zinc-500 hover:text-zinc-100 transition-colors">
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex gap-1.5 px-6 py-3 border-b border-zinc-800 shrink-0">
+          {TABS_PERFIL.map(t => (
+            <button
+              key={t.id}
+              onClick={() => setTab(t.id)}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                tab === t.id ? 'bg-gold-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Contenido scrollable */}
+        <div className="overflow-y-auto flex-1 px-6 py-5">
+          {guardado && (
+            <div className="flex items-center gap-2 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs rounded-xl px-4 py-2.5 mb-4">
+              <CheckCircle size={14} /> Cambios guardados
+            </div>
+          )}
+
+          {/* Personal */}
+          {tab === 'personal' && (
+            <form onSubmit={guardar} className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { key: 'nombre',    label: 'Nombre',    type: 'text' },
+                  { key: 'telefono',  label: 'Teléfono',  type: 'text' },
+                ].map(({ key, label, type }) => (
+                  <div key={key}>
+                    <label className="text-zinc-500 text-xs block mb-1">{label}</label>
+                    <input type={type} value={perfil[key]}
+                      onChange={e => setPerfil(p => ({ ...p, [key]: e.target.value }))}
+                      className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div>
+                <label className="text-zinc-500 text-xs block mb-1">Email</label>
+                <input type="email" value={perfil.email}
+                  onChange={e => setPerfil(p => ({ ...p, email: e.target.value }))}
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+                />
+              </div>
+              <div>
+                <label className="text-zinc-500 text-xs block mb-1">Fecha de nacimiento</label>
+                <input type="date" value={perfil.fechaNac}
+                  onChange={e => setPerfil(p => ({ ...p, fechaNac: e.target.value }))}
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+                />
+              </div>
+              <button type="submit" className="w-full py-2.5 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl text-sm transition-colors">
+                Guardar cambios
+              </button>
+            </form>
+          )}
+
+          {/* Seguridad */}
+          {tab === 'seguridad' && (
+            <div className="space-y-4">
+              <form onSubmit={guardar} className="space-y-3">
+                <div className="flex items-center gap-2 mb-3">
+                  <Lock size={14} className="text-gold-400" />
+                  <p className="text-zinc-100 text-sm font-semibold">Cambiar contraseña</p>
+                </div>
+                {[
+                  { key: 'actual',    label: 'Contraseña actual' },
+                  { key: 'nueva',     label: 'Nueva contraseña' },
+                  { key: 'confirmar', label: 'Confirmar nueva' },
+                ].map(({ key, label }) => (
+                  <div key={key}>
+                    <label className="text-zinc-500 text-xs block mb-1">{label}</label>
+                    <input type="password" placeholder="••••••••" value={pass[key]}
+                      onChange={e => setPass(p => ({ ...p, [key]: e.target.value }))}
+                      className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+                    />
+                  </div>
+                ))}
+                <button type="submit" className="w-full py-2.5 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl text-sm transition-colors">
+                  Actualizar contraseña
+                </button>
+              </form>
+
+              <div className="border-t border-zinc-800 pt-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <Shield size={14} className="text-gold-400" />
+                  <p className="text-zinc-100 text-sm font-semibold">Sesiones activas</p>
+                </div>
+                {[
+                  { dispositivo: 'Chrome · Windows', lugar: 'Madrid, España', activo: true },
+                  { dispositivo: 'Safari · iPhone',  lugar: 'Madrid, España', activo: false },
+                ].map((s, i) => (
+                  <div key={i} className="flex items-center justify-between py-2.5 border-t border-zinc-800/60 first:border-t-0">
+                    <div>
+                      <p className="text-zinc-200 text-xs font-medium">{s.dispositivo}</p>
+                      <p className="text-zinc-500 text-xs">{s.lugar}</p>
+                    </div>
+                    {s.activo
+                      ? <span className="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full">Actual</span>
+                      : <button className="text-xs text-red-400 hover:text-red-300">Cerrar</button>
+                    }
+                  </div>
+                ))}
+              </div>
+
+              <div className="border-t border-zinc-800 pt-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <LogOut size={14} className="text-red-400" />
+                  <p className="text-zinc-100 text-sm font-semibold">Zona de peligro</p>
+                </div>
+                <button className="w-full py-2 border border-red-500/40 text-red-400 hover:bg-red-500/10 rounded-xl text-sm transition-colors">
+                  Eliminar cuenta
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Notificaciones */}
+          {tab === 'notificaciones' && (
+            <form onSubmit={guardar} className="space-y-0">
+              <div className="flex items-center gap-2 mb-4">
+                <Bell size={14} className="text-gold-400" />
+                <p className="text-zinc-100 text-sm font-semibold">Preferencias de avisos</p>
+              </div>
+              <div className="divide-y divide-zinc-800">
+                {[
+                  { key: 'pedidos',    label: 'Estado de pedidos',   desc: 'Cuando tu pedido esté listo' },
+                  { key: 'entradas',   label: 'Entradas y reservas', desc: 'Confirmaciones y recordatorios' },
+                  { key: 'vip',        label: 'Salas VIP',           desc: 'Disponibilidad y ofertas' },
+                  { key: 'ofertas',    label: 'Promociones',         desc: 'Descuentos y eventos' },
+                  { key: 'newsletter', label: 'Newsletter',          desc: 'Novedades mensuales' },
+                ].map(({ key, label, desc }) => (
+                  <div key={key} className="flex items-center justify-between py-3.5">
+                    <div>
+                      <p className="text-zinc-100 text-sm">{label}</p>
+                      <p className="text-zinc-500 text-xs">{desc}</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setNotifs(n => ({ ...n, [key]: !n[key] }))}
+                      className={`relative w-9 h-5 rounded-full transition-colors shrink-0 ml-4 ${notifs[key] ? 'bg-gold-500' : 'bg-zinc-700'}`}
+                    >
+                      <span className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform ${notifs[key] ? 'translate-x-4' : 'translate-x-0'}`} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <button type="submit" className="w-full py-2.5 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl text-sm transition-colors mt-4">
+                Guardar preferencias
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function Sidebar({ onClose }) {
+  const pathname = usePathname()
+  const { rol } = useSesionStore()
+  const clienteItems = NAV_CLIENTE.filter(i => i.roles.includes(rol ?? 'cliente'))
+  const gestionItems = NAV_GESTION.filter(i => i.roles.includes(rol ?? 'cliente'))
+  const generalItems = NAV_GENERAL.filter(i => i.roles.includes(rol ?? 'cliente'))
+
+  return (
+    <aside className="w-64 h-full bg-zinc-900 border-r border-zinc-800 flex flex-col">
+        <div className="px-6 py-6 border-b border-zinc-800 flex items-center justify-between">
+          <FlexLogo className="h-10 w-auto" />
+          {onClose && (
+            <button onClick={onClose} className="lg:hidden text-zinc-500 hover:text-zinc-100 transition-colors">
+              <X size={20} />
+            </button>
+          )}
+        </div>
+
+        <nav className="flex-1 py-4 px-3 space-y-4 overflow-y-auto">
+          {clienteItems.length > 0 && (
+            <NavGroup title="Cliente" items={clienteItems} pathname={pathname} onClose={onClose} />
+          )}
+          {gestionItems.length > 0 && (
+            <NavGroup title="Gestión" items={gestionItems} pathname={pathname} onClose={onClose} />
+          )}
+          {generalItems.length > 0 && (
+            <NavGroup title="Cuenta" items={generalItems} pathname={pathname} onClose={onClose} />
+          )}
+        </nav>
+
+        {/* Avatar — navega a perfil */}
+        <Link
+          href="/perfil"
+          onClick={onClose}
+          className="px-4 py-4 border-t border-zinc-800 flex items-center gap-3 hover:bg-zinc-800/50 transition-colors w-full text-left group"
+        >
+          <div className="w-8 h-8 rounded-full bg-gold-500/30 flex items-center justify-center text-gold-400 text-sm font-bold shrink-0">
+            A
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-zinc-100 truncate">Alex García</p>
+            <p className="text-xs text-zinc-500">Cliente</p>
+          </div>
+          <ChevronUp size={14} className="text-zinc-600 group-hover:text-zinc-400 transition-colors" />
+        </Link>
+    </aside>
+  )
+}
+
+function FlexLogo({ className = '' }) {
+  return (
+    <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="FLEX Live Sessions">
+      <defs>
+        <linearGradient id="sg1" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stopColor="#f0c040" />
+          <stop offset="100%" stopColor="#a87010" />
+        </linearGradient>
+      </defs>
+      <text x="2" y="42" fontFamily="Georgia, serif" fontSize="44" fontWeight="bold" fontStyle="italic" fill="url(#sg1)" letterSpacing="1">FLEX</text>
+      <line x1="2" y1="48" x2="158" y2="48" stroke="#a87010" strokeWidth="0.7" opacity="0.7" />
+      <text x="2" y="58" fontFamily="Georgia, serif" fontSize="9" letterSpacing="4" fill="#c8960c" opacity="0.9">LIVE SESSIONS</text>
+    </svg>
+  )
+}
+</file>
+
+<file path="src/lib/supabase/client.js">
+import { createBrowserClient } from '@supabase/ssr'
+
+export function createClient() {
+  return createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  )
+}
+</file>
+
+<file path="src/lib/supabase/server.js">
+import { createServerClient } from '@supabase/ssr'
+import { cookies } from 'next/headers'
+
+export async function createClient() {
+  const cookieStore = await cookies()
+
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    {
+      cookies: {
+        getAll() {
+          return cookieStore.getAll()
+        },
+        setAll(toSet) {
+          toSet.forEach(({ name, value, options }) => {
+            cookieStore.set(name, value, options)
+          })
+        },
+      },
+    }
+  )
+}
+</file>
+
+<file path="src/store/carritoStore.js">
+// src/store/carritoStore.js
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
+
+export const useCarritoStore = create(
+  persist(
+    (set, get) => ({
+      items: [],
+      mesaNumero: null,   // número visible en la mesa (ej. 7), no el id de BD
+
+      setMesaNumero(numero) {
+        set({ mesaNumero: numero })
+      },
+
+      agregarItem(producto) {
+        set((estado) => {
+          const existente = estado.items.find((i) => i.id === producto.id)
+          if (existente) {
+            return {
+              items: estado.items.map((i) =>
+                i.id === producto.id ? { ...i, cantidad: i.cantidad + 1 } : i
+              ),
+            }
+          }
+          return { items: [...estado.items, { ...producto, cantidad: 1 }] }
+        })
+      },
+
+      quitarItem(productoId) {
+        set((estado) => ({
+          items: estado.items
+            .map((i) => (i.id === productoId ? { ...i, cantidad: i.cantidad - 1 } : i))
+            .filter((i) => i.cantidad > 0),
+        }))
+      },
+
+      eliminarItem(productoId) {
+        set((estado) => ({
+          items: estado.items.filter((i) => i.id !== productoId),
+        }))
+      },
+
+      vaciarCarrito() {
+        set({ items: [], mesaNumero: null })
+      },
+    }),
+    {
+      name: 'flex-carrito',
+      // solo persistimos items y mesaNumero; el resto es estado de UI efímero
+      partialize: (estado) => ({ items: estado.items, mesaNumero: estado.mesaNumero }),
+    }
+  )
+)
+</file>
+
+<file path="src/store/reservasStore.js">
+// src/store/reservaStore.js
+import { create } from 'zustand'
+
+export const useReservaStore = create((set, get) => ({
+  salaId: null,        // id entero de salas_vip en BD (null si no hay selección)
+  fecha: '',           // string 'YYYY-MM-DD'
+  hora: '',            // string 'HH:MM'  (ej. '22:00')
+  duracion: '',        // string con número de horas (ej. '2 horas')
+
+  setSala(salaId) {
+    set({ salaId })
+  },
+
+  setFecha(fecha) {
+    set({ fecha })
+  },
+
+  setHora(hora) {
+    set({ hora })
+  },
+
+  setDuracion(duracion) {
+    set({ duracion })
+  },
+
+  resetReserva() {
+    set({ salaId: null, fecha: '', hora: '', duracion: '' })
+  },
+
+  // Devuelve los timestamps 'inicio' y 'fin' listos para insertar en BD.
+  // Retorna null si faltan campos.
+  getTimestamps() {
+    const { fecha, hora, duracion } = get()
+    if (!fecha || !hora || !duracion) return null
+    const horas = parseInt(duracion)   // '2 horas' → 2
+    const inicio = new Date(`${fecha}T${hora}:00`)
+    const fin = new Date(inicio.getTime() + horas * 60 * 60 * 1000)
+    return { inicio: inicio.toISOString(), fin: fin.toISOString() }
+  },
+}))
+</file>
+
+<file path="src/store/sesionStore.js">
+import { create } from 'zustand'
+
+export const useSesionStore = create((set) => ({
+  usuario: null,
+  rol: null,
+  cargando: true,
+
+  setSesion(usuario, rol) {
+    set({ usuario, rol, cargando: false })
+  },
+
+  limpiarSesion() {
+    set({ usuario: null, rol: null, cargando: false })
+  },
+}))
+</file>
+
+</files>

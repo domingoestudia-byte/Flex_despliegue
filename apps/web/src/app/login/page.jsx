@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import FlexLogo from '@/components/FlexLogo'
@@ -15,10 +15,16 @@ const RUTA_POR_ROL = {
 
 export default function PaginaLogin() {
   const router = useRouter()
+  const [registroExitoso, setRegistroExitoso] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [cargando, setCargando] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setRegistroExitoso(params.get('registered') === '1')
+  }, [])
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -81,6 +87,11 @@ export default function PaginaLogin() {
           <h1 className="text-2xl font-bold text-zinc-100 mb-1">Bienvenido de nuevo</h1>
           <p className="text-zinc-500 text-sm mb-8">Accede a tu cuenta Flex</p>
 
+          {registroExitoso && (
+            <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm rounded-xl px-4 py-3 mb-4">
+              Cuenta creada correctamente. Ahora inicia sesión.
+            </div>
+          )}
           {error && (
             <div className="bg-red-500/10 border border-red-500/30 text-red-400 text-sm rounded-xl px-4 py-3 mb-4">
               {error}

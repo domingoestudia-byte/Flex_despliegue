@@ -43,7 +43,7 @@ export default function PaginaRegister() {
       return
     }
 
-    router.push('/')
+    router.push('/login?registered=1')
   }
 
   return (
