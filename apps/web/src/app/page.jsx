@@ -5,18 +5,18 @@ import { useCarritoStore } from '@/store/carritoStore'
 import { ShoppingCart, Plus, Minus, X } from 'lucide-react'
 
 const PRODUCTOS = [
-  { id: 1,  nombre: 'Cerveza Artesana',     categoria: 'Bebida', precio: 4.5,  img: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&auto=format&fit=crop&q=80' },
-  { id: 2,  nombre: 'Gin Tonic Premium',    categoria: 'Bebida', precio: 9.0,  img: 'https://images.unsplash.com/photo-1560512823-829485b8bf24?w=400&auto=format&fit=crop&q=80' },
-  { id: 3,  nombre: 'Agua mineral',         categoria: 'Bebida', precio: 2.0,  img: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&auto=format&fit=crop&q=80' },
-  { id: 4,  nombre: 'Mojito',               categoria: 'Bebida', precio: 8.5,  img: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&auto=format&fit=crop&q=80' },
-  { id: 5,  nombre: 'Coca-Cola',            categoria: 'Bebida', precio: 3.0,  img: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&auto=format&fit=crop&q=80' },
-  { id: 6,  nombre: 'Vino tinto',           categoria: 'Bebida', precio: 5.5,  img: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?w=400&auto=format&fit=crop&q=80' },
-  { id: 7,  nombre: 'Nachos con guacamole', categoria: 'Comida', precio: 7.0,  img: 'https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=400&auto=format&fit=crop&q=80' },
-  { id: 8,  nombre: 'Tabla de quesos',      categoria: 'Comida', precio: 12.0, img: 'https://images.unsplash.com/photo-1452195100486-9cc805987862?w=400&auto=format&fit=crop&q=80' },
-  { id: 9,  nombre: 'Alitas BBQ',           categoria: 'Comida', precio: 9.5,  img: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&auto=format&fit=crop&q=80' },
-  { id: 10, nombre: 'Patatas bravas',       categoria: 'Comida', precio: 5.0,  img: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&auto=format&fit=crop&q=80' },
-  { id: 11, nombre: 'Hamburguesa Flex',     categoria: 'Comida', precio: 11.0, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&auto=format&fit=crop&q=80' },
-  { id: 12, nombre: 'Mini pizzas',          categoria: 'Comida', precio: 8.0,  img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&auto=format&fit=crop&q=80' },
+  { id: 1, nombre: 'Cerveza Artesana', categoria: 'Bebida', precio: 4.5, img: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&auto=format&fit=crop&q=80' },
+  { id: 2, nombre: 'Gin Tonic Premium', categoria: 'Bebida', precio: 9.0, img: 'https://images.unsplash.com/photo-1560512823-829485b8bf24?w=400&auto=format&fit=crop&q=80' },
+  { id: 3, nombre: 'Agua mineral', categoria: 'Bebida', precio: 2.0, img: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&auto=format&fit=crop&q=80' },
+  { id: 4, nombre: 'Mojito', categoria: 'Bebida', precio: 8.5, img: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&auto=format&fit=crop&q=80' },
+  { id: 5, nombre: 'Coca-Cola', categoria: 'Bebida', precio: 3.0, img: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&auto=format&fit=crop&q=80' },
+  { id: 6, nombre: 'Vino tinto', categoria: 'Bebida', precio: 5.5, img: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?w=400&auto=format&fit=crop&q=80' },
+  { id: 7, nombre: 'Nachos con guacamole', categoria: 'Comida', precio: 7.0, img: 'https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=400&auto=format&fit=crop&q=80' },
+  { id: 8, nombre: 'Tabla de quesos', categoria: 'Comida', precio: 12.0, img: 'https://images.unsplash.com/photo-1452195100486-9cc805987862?w=400&auto=format&fit=crop&q=80' },
+  { id: 9, nombre: 'Alitas BBQ', categoria: 'Comida', precio: 9.5, img: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&auto=format&fit=crop&q=80' },
+  { id: 10, nombre: 'Patatas bravas', categoria: 'Comida', precio: 5.0, img: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&auto=format&fit=crop&q=80' },
+  { id: 11, nombre: 'Hamburguesa Flex', categoria: 'Comida', precio: 11.0, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&auto=format&fit=crop&q=80' },
+  { id: 12, nombre: 'Mini pizzas', categoria: 'Comida', precio: 8.0, img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&auto=format&fit=crop&q=80' },
 ]
 
 const CATEGORIAS = ['Todo', 'Bebida', 'Comida']
@@ -61,11 +61,10 @@ export default function PaginaPedir() {
             <button
               key={c}
               onClick={() => setCat(c)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                cat === c
-                  ? 'bg-gold-500 text-zinc-950'
-                  : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
-              }`}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${cat === c
+                ? 'bg-gold-500 text-zinc-950'
+                : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+                }`}
             >
               {c}
             </button>
@@ -121,7 +120,7 @@ export default function PaginaPedir() {
       {/* Botón flotante carrito */}
       <button
         onClick={() => setCarritoAbierto(true)}
-        className="fixed bottom-6 right-6 z-10 w-14 h-14 bg-gold-500 hover:bg-gold-600 text-zinc-950 rounded-full shadow-lg flex items-center justify-center transition-colors"
+        className="fixed top-20 right-10 md:top-auto md:bottom-6 md:right-6 z-50 w-14 h-14 bg-gold-500 hover:bg-gold-600 text-zinc-950 rounded-full shadow-lg flex items-center justify-center transition-colors"
       >
         <ShoppingCart size={22} />
         {totalItems > 0 && (
@@ -141,9 +140,8 @@ export default function PaginaPedir() {
 
       {/* Drawer carrito */}
       <div
-        className={`fixed inset-y-0 right-0 z-30 w-full sm:w-96 bg-zinc-900 border-l border-zinc-800 flex flex-col transition-transform duration-300 ${
-          carritoAbierto ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed inset-y-0 right-0 z-30 w-full sm:w-96 bg-zinc-900 border-l border-zinc-800 flex flex-col transition-transform duration-300 ${carritoAbierto ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         {/* Cabecera drawer */}
         <div className="px-6 py-5 border-b border-zinc-800 flex items-center gap-2">

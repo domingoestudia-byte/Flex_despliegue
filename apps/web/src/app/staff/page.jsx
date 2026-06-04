@@ -7,7 +7,7 @@ const PEDIDOS_INIT = [
   {
     id: 1, mesa: 'Mesa 3', cliente: 'María López', hora: '23:14',
     estado: 'pendiente',
-    items: [{ nombre: 'Gin Tonic Premium', cantidad: 2 }, { nombre: 'Nachos', cantidad: 1 }],
+    items: [{ nombre: 'Gin Tonic Premium', cantidad: 2 }, { nombre: 'Nachos', cantidad: 1 }, { nombre: 'Patatas bravas', cantidad: 2 }],
   },
   {
     id: 2, mesa: 'Mesa 7', cliente: 'Alex García', hora: '23:21',
@@ -32,16 +32,16 @@ const PEDIDOS_INIT = [
 ]
 
 const ESTADOS = {
-  pendiente:  { label: 'Pendiente',  color: 'text-amber-400',  bg: 'bg-amber-500/20',  border: 'border-amber-500/30',  icon: Clock },
-  preparando: { label: 'Preparando', color: 'text-blue-400',   bg: 'bg-blue-500/20',   border: 'border-blue-500/30',   icon: ChefHat },
-  completado: { label: 'Completado', color: 'text-emerald-400',bg: 'bg-emerald-500/20',border: 'border-zinc-800',       icon: CheckCircle },
+  pendiente: { label: 'Pendiente', color: 'text-amber-400', bg: 'bg-amber-500/20', border: 'border-amber-500/30', icon: Clock },
+  preparando: { label: 'Preparando', color: 'text-blue-400', bg: 'bg-blue-500/20', border: 'border-blue-500/30', icon: ChefHat },
+  completado: { label: 'Completado', color: 'text-emerald-400', bg: 'bg-emerald-500/20', border: 'border-zinc-800', icon: CheckCircle },
 }
 
 const SIGUIENTE = { pendiente: 'preparando', preparando: 'completado' }
 
 const BOTONES = {
-  pendiente:  { label: 'Preparar',  clases: 'bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 border-blue-500/30' },
-  preparando: { label: 'Entregar',  clases: 'bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border-emerald-500/30' },
+  pendiente: { label: 'Preparar', clases: 'bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 border-blue-500/30' },
+  preparando: { label: 'Entregar', clases: 'bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border-emerald-500/30' },
 }
 
 const FILTROS = ['todos', 'pendiente', 'preparando', 'completado']
@@ -59,8 +59,8 @@ export default function PaginaStaff() {
   }
 
   const pedidosFiltrados = filtro === 'todos' ? pedidos : pedidos.filter(p => p.estado === filtro)
-  const pendientes  = pedidos.filter(p => p.estado === 'pendiente').length
-  const preparando  = pedidos.filter(p => p.estado === 'preparando').length
+  const pendientes = pedidos.filter(p => p.estado === 'pendiente').length
+  const preparando = pedidos.filter(p => p.estado === 'preparando').length
   const completados = pedidos.filter(p => p.estado === 'completado').length
 
   return (
@@ -103,9 +103,8 @@ export default function PaginaStaff() {
           <button
             key={f}
             onClick={() => setFiltro(f)}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
-              filtro === f ? 'bg-gold-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
-            }`}
+            className={`px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${filtro === f ? 'bg-gold-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+              }`}
           >
             {f}
           </button>
@@ -118,7 +117,6 @@ export default function PaginaStaff() {
           const estado = ESTADOS[pedido.estado]
           const IconEstado = estado.icon
           const boton = BOTONES[pedido.estado]
-
           return (
             <div
               key={pedido.id}
@@ -151,7 +149,7 @@ export default function PaginaStaff() {
                   onClick={() => avanzar(pedido.id)}
                   className={`shrink-0 flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border transition-colors ${boton.clases}`}
                 >
-                  {pedido.estado === 'pendiente'  && <ChefHat size={15} />}
+                  {pedido.estado === 'pendiente' && <ChefHat size={15} />}
                   {pedido.estado === 'preparando' && <CheckCircle size={15} />}
                   {boton.label}
                 </button>
