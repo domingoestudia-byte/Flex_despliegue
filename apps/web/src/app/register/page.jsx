@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import FlexLogo from '@/components/FlexLogo'
+import FlexLogo from '@/components/layout/FlexLogo'
 import { register } from '@/lib/actions/auth'
 
 export default function PaginaRegister() {

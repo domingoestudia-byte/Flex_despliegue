@@ -3,18 +3,18 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ShoppingCart, Crown, User, ShieldCheck, QrCode, LayoutDashboard, ChevronUp } from 'lucide-react'
-import FlexLogo from '@/components/FlexLogo'
+import FlexLogo from '@/components/layout/FlexLogo'
 
 const NAV_CLIENTE = [
-  { icon: ShoppingCart, label: 'Pedir',     href: '/',        roles: ['cliente', 'admin'] },
-  { icon: Crown,        label: 'Salas VIP', href: '/vip',     roles: ['cliente', 'admin'] },
-  { icon: User,         label: 'Mi área',   href: '/mi-area', roles: ['cliente', 'admin'] },
+  { icon: ShoppingCart, label: 'Pedir', href: '/' },
+  { icon: Crown, label: 'Salas VIP', href: '/vip' },
+  { icon: User, label: 'Mi área', href: '/mi-area' },
 ]
 
 const NAV_STAFF = [
-  { icon: ShieldCheck,     label: 'Panel Staff', href: '/staff',    roles: ['staff', 'admin'] },
-  { icon: QrCode,          label: 'Porteros',    href: '/porteros', roles: ['portero', 'staff', 'admin'] },
-  { icon: LayoutDashboard, label: 'Admin',       href: '/admin',    roles: ['admin'] },
+  { icon: ShieldCheck, label: 'Panel Staff', href: '/staff', roles: ['staff', 'admin'] },
+  { icon: QrCode, label: 'Porteros', href: '/porteros', roles: ['portero', 'staff', 'admin'] },
+  { icon: LayoutDashboard, label: 'Admin', href: '/admin', roles: ['admin'] },
 ]
 
 function NavGroup({ title, items, pathname }) {
@@ -27,11 +27,10 @@ function NavGroup({ title, items, pathname }) {
           <Link
             key={href}
             href={href}
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
-              activo
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${activo
                 ? 'bg-gold-500/20 text-gold-400'
                 : 'text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100'
-            }`}
+              }`}
           >
             <Icon size={18} />
             {label}

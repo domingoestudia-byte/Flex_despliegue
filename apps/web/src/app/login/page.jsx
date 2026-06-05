@@ -2,13 +2,13 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import FlexLogo from '@/components/FlexLogo'
+import FlexLogo from '@/components/layout/FlexLogo'
 import { login } from '@/lib/actions/auth'
 
 export default function PaginaLogin() {
-  const [email, setEmail]       = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError]       = useState('')
+  const [error, setError] = useState('')
   const [cargando, setCargando] = useState(false)
 
   async function handleSubmit(e) {

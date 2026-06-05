@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import Sidebar from '@/components/Sidebar'
+import Sidebar from '@/components/layout/Sidebar'
 import BottomNav from './BottomNav'
 
 const AUTH_ROUTES = ['/login', '/register']

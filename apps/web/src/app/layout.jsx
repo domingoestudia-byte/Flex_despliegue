@@ -1,6 +1,6 @@
 import './globals.css'
 import { Playfair_Display, Raleway } from 'next/font/google'
-import Shell from '@/components/Shell'
+import Shell from '@/components/layout/Shell'
 import { createClient } from '@/lib/supabase/server'
 
 const playfair = Playfair_Display({
