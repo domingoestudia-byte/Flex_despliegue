@@ -6,16 +6,9 @@ import TabProductos from './TabProductos'
 
 const TABS = ['Usuarios', 'Productos']
 
-const USUARIOS_INIT = [
-  { id: 1, nombre: 'Alex García',  activo: true  },
-  { id: 2, nombre: 'Sara Martín',  activo: true  },
-  { id: 3, nombre: 'Carlos Ruiz',  activo: true  },
-  { id: 4, nombre: 'Laura Pérez',  activo: false },
-]
-
-export default function AdminClient({ productosIniciales }) {
+export default function AdminClient({ productosIniciales, usuariosIniciales = [] }) {
   const [tab, setTab]         = useState('Usuarios')
-  const [usuarios, setUsuarios] = useState(USUARIOS_INIT)
+  const [usuarios, setUsuarios] = useState(usuariosIniciales)
 
   const productosActivos = productosIniciales.filter((p) => p.disponible).length
 
@@ -57,7 +50,7 @@ export default function AdminClient({ productosIniciales }) {
       </div>
 
       {tab === 'Usuarios' && (
-        <TabUsuarios onUsuariosChange={setUsuarios} />
+        <TabUsuarios usuarios={usuarios} onUsuariosChange={setUsuarios} />
       )}
       {tab === 'Productos' && (
         <TabProductos productos={productosIniciales} />

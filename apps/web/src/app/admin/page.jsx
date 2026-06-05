@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { getUsuarios } from '@/lib/actions/usuarios'
 import AdminClient from '@/components/admin/AdminClient'
 
 export default async function PaginaAdmin() {
@@ -9,6 +10,14 @@ export default async function PaginaAdmin() {
     .select('id, nombre, descripcion, precio, categoria, disponible')
     .order('categoria')
 
+  // Cargar usuarios reales desde auth + perfiles
+  let usuarios = []
+  try {
+    usuarios = await getUsuarios()
+  } catch (e) {
+    console.error('Error cargando usuarios:', e.message)
+  }
+
   if (error) {
     return (
       <div className="flex items-center justify-center min-h-full">
@@ -17,5 +26,5 @@ export default async function PaginaAdmin() {
     )
   }
 
-  return <AdminClient productosIniciales={productos} />
+  return <AdminClient productosIniciales={productos} usuariosIniciales={usuarios} />
 }
