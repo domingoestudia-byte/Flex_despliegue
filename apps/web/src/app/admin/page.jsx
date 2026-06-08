@@ -5,20 +5,15 @@ import AdminClient from '@/components/admin/AdminClient'
 export default async function PaginaAdmin() {
   const supabase = await createClient()
 
-  const { data: productos, error } = await supabase
-    .from('productos')
-    .select('id, nombre, descripcion, precio, categoria, disponible')
-    .order('categoria')
+  const [
+    { data: productos, error: errProductos },
+    { data: perfiles, error: errPerfiles },
+  ] = await Promise.all([
+    supabase.from('productos').select('id, nombre, descripcion, precio, categoria, disponible').order('categoria'),
+    supabase.from('perfiles').select('id, nombre, rol, avatar_url, activo').order('nombre'),
+  ])
 
-  // Cargar usuarios reales desde auth + perfiles
-  let usuarios = []
-  try {
-    usuarios = await getUsuarios()
-  } catch (e) {
-    console.error('Error cargando usuarios:', e.message)
-  }
-
-  if (error) {
+  if (errProductos || errPerfiles) {
     return (
       <div className="flex items-center justify-center min-h-full">
         <p className="text-red-400 text-sm">Error al cargar los datos.</p>
@@ -26,5 +21,5 @@ export default async function PaginaAdmin() {
     )
   }
 
-  return <AdminClient productosIniciales={productos} usuariosIniciales={usuarios} />
+  return <AdminClient productosIniciales={productos} perfilesIniciales={perfiles} />
 }

@@ -1,12 +1,14 @@
 create extension if not exists btree_gist;
 
 create table public.perfiles (
-  id         uuid primary key references auth.users(id) on delete cascade,
-  nombre     text,
-  rol        text not null default 'cliente'
-             check (rol in ('cliente', 'staff', 'admin', 'portero')),
-  avatar_url text,
-  creado_en  timestamptz not null default now()
+  id                 uuid primary key references auth.users(id) on delete cascade,
+  nombre             text,
+  rol                text not null default 'cliente'
+                     check (rol in ('cliente', 'staff', 'admin', 'portero')),
+  avatar_url         text,
+  activo             boolean not null default true,
+  stripe_customer_id text,
+  creado_en          timestamptz not null default now()
 );
 
 
@@ -17,7 +19,7 @@ create or replace function public.handle_new_user()
   as $$
   begin
   insert into public.perfiles (id, nombre)
-  values (new.id, new.raw_user_meta_data->>'full_name');
+  values (new.id, new.raw_user_meta_data->>'nombre');
   return new;
 end;
 $$;
@@ -55,14 +57,18 @@ create table public.productos (
 );
 
 create table public.pedidos (
-  id          bigserial primary key,
-  mesa_id     int references public.mesas(id),
-  cliente_id  uuid references public.perfiles(id),
-  estado      text not null default 'pendiente'
-              check (estado in ('pendiente','en_barra','listo','entregado','cancelado')),
-  total       numeric(8,2),
-  creado_en   timestamptz not null default now(),
-  actualizado timestamptz not null default now()
+  id             bigserial primary key,
+  mesa_id        int references public.mesas(id),
+  cliente_id     uuid references public.perfiles(id),
+  estado         text not null default 'pendiente'
+                 check (estado in ('pendiente','en_barra','listo','entregado','cancelado')),
+  estado_pago    text not null default 'pendiente'
+                 check (estado_pago in ('pendiente','pagado','cancelado')),
+  total          numeric(8,2),
+  stripe_session text,
+  stripe_payment text,
+  creado_en      timestamptz not null default now(),
+  actualizado    timestamptz not null default now()
 );
 
 create table public.pedido_items (
@@ -96,6 +102,8 @@ insert into public.salas_vip (nombre, descripcion, capacidad, precio_hora) value
   fin             timestamptz not null,
   estado          text not null default 'pendiente'
                   check (estado in ('pendiente','pagada','cancelada','completada')),
+  estado_pago     text not null default 'pendiente'
+                  check (estado_pago in ('pendiente','pagado','cancelado')),
   stripe_session  text,
   stripe_payment  text,
   qr_token        text unique,
@@ -110,3 +118,29 @@ insert into public.salas_vip (nombre, descripcion, capacidad, precio_hora) value
 
 ALTER TABLE public.perfiles     ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.salas_vip     ENABLE ROW LEVEL SECURITY;
+
+-- Función RPC para que el admin borre un usuario de auth.users.
+-- SECURITY DEFINER: se ejecuta con privilegios elevados (puede acceder a auth.users).
+-- La autorización se verifica dentro de la función vía mi_rol().
+
+create or replace function public.borrar_usuario(user_id uuid)
+returns void
+language plpgsql
+security definer
+as $$
+begin
+  if public.mi_rol() != 'admin' then
+    raise exception 'No autorizado';
+  end if;
+
+  delete from auth.users where id = user_id;
+end;
+$$;
+
+-- ── Storage buckets ───────────────────────────────────────────────────────────
+
+insert into storage.buckets (id, name, public)
+values
+  ('productos', 'productos', true),
+  ('avatares',  'avatares',  true)
+on conflict (id) do nothing;

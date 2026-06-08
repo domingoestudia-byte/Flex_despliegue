@@ -1,83 +1,42 @@
 'use client'
 
 import { useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
+import { useRouter } from 'next/navigation'
 import { useCarritoStore } from '@/store/carritoStore'
+import { iniciarPagoPedido } from '@/lib/actions/pedidos'
 import { ShoppingCart, X } from 'lucide-react'
 
-export default function CarritoDrawer() {
-  const { items, mesaNumero, setMesaNumero, eliminarItem, vaciarCarrito } = useCarritoStore()
+export default function CarritoDrawer({ mesas = [] }) {
+  const router = useRouter()
+  const { items, eliminarItem, vaciarCarrito } = useCarritoStore()
 
   const totalItems = useCarritoStore((s) => s.items.reduce((acc, i) => acc + i.cantidad, 0))
   const total      = useCarritoStore((s) => s.items.reduce((acc, i) => acc + i.precio * i.cantidad, 0))
 
   const [carritoAbierto, setCarritoAbierto] = useState(false)
-  const [pedidoEnviado, setPedidoEnviado]   = useState(false)
   const [modalMesa, setModalMesa]           = useState(false)
+  const [mesaSel, setMesaSel]               = useState(null)
   const [enviando, setEnviando]             = useState(false)
   const [error, setError]                   = useState(null)
 
-  async function handleConfirmarPedido(e) {
-    e.preventDefault()
-    if (!mesaNumero || items.length === 0) return
+  const pisos = [...new Set(mesas.map((m) => m.piso))].sort()
+
+  async function handleConfirmarPedido() {
+    if (!mesaSel || items.length === 0) return
 
     setEnviando(true)
     setError(null)
 
-    const supabase = createClient()
-
-    const { data: mesaData, error: mesaError } = await supabase
-      .from('mesas')
-      .select('id')
-      .eq('numero', mesaNumero)
-      .single()
-
-    if (mesaError || !mesaData) {
-      setError('Mesa no encontrada. Comprueba el número e inténtalo de nuevo.')
+    try {
+      // Crea el pedido en la DB y la sesión de pago en Stripe, y nos
+      // devuelve la URL a la que redirigir al usuario para que pague
+      const url = await iniciarPagoPedido({ mesaId: mesaSel.id, items })
+      vaciarCarrito()
+      router.push(url)
+    } catch (err) {
+      setError(err.message ?? 'No se pudo crear el pedido. Inténtalo de nuevo.')
       setEnviando(false)
-      return
     }
-
-    const totalPedido = items.reduce((sum, i) => sum + i.precio * i.cantidad, 0)
-
-    const { data: pedido, error: pedidoError } = await supabase
-      .from('pedidos')
-      .insert({ mesa_id: mesaData.id, estado: 'pendiente', total: totalPedido })
-      .select('id')
-      .single()
-
-    if (pedidoError) {
-      setError('No se pudo crear el pedido. Inténtalo de nuevo.')
-      setEnviando(false)
-      return
-    }
-
-    const { error: itemsError } = await supabase
-      .from('pedido_items')
-      .insert(
-        items.map((i) => ({
-          pedido_id:   pedido.id,
-          producto_id: i.id,
-          cantidad:    i.cantidad,
-          precio_unit: i.precio,
-        }))
-      )
-
-    if (itemsError) {
-      setError('El pedido se creó pero hubo un problema al guardar los productos.')
-      setEnviando(false)
-      return
-    }
-
-    setModalMesa(false)
-    setPedidoEnviado(true)
-    vaciarCarrito()
-    setEnviando(false)
-
-    setTimeout(() => {
-      setPedidoEnviado(false)
-      setCarritoAbierto(false)
-    }, 3000)
   }
 
   return (
@@ -118,12 +77,7 @@ export default function CarritoDrawer() {
         </div>
 
         <div className="flex-1 overflow-y-auto px-4 py-4">
-          {pedidoEnviado && (
-            <div className="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-sm rounded-lg px-4 py-3 mb-4">
-              ¡Pedido enviado! Llega en 10–15 min.
-            </div>
-          )}
-          {items.length === 0 && !pedidoEnviado ? (
+          {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full gap-3 text-center">
               <ShoppingCart size={40} className="text-zinc-700" />
               <p className="text-zinc-500 text-sm">Tu pedido está vacío</p>
@@ -173,43 +127,60 @@ export default function CarritoDrawer() {
         )}
       </div>
 
-      {/* Modal número de mesa */}
+      {/* Modal selector de mesa */}
       {modalMesa && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="absolute inset-0 bg-black/70" onClick={() => setModalMesa(false)} />
-          <form
-            onSubmit={handleConfirmarPedido}
-            className="relative bg-zinc-900 border border-zinc-700 rounded-2xl p-8 w-full max-w-sm mx-4 shadow-2xl"
-          >
-            <h2 className="text-lg font-bold text-zinc-100 mb-1">¿En qué mesa estás?</h2>
-            <p className="text-zinc-500 text-sm mb-6">Introduce el número que aparece en tu mesa.</p>
-            <input
-              type="number"
-              min="1"
-              placeholder="Ej. 7"
-              value={mesaNumero ?? ''}
-              onChange={(e) => setMesaNumero(Number(e.target.value))}
-              autoFocus
-              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-2xl text-center font-bold text-zinc-100 outline-none focus:border-gold-500 transition-colors mb-6"
-            />
-            {error && <p className="text-red-400 text-xs mb-4">{error}</p>}
-            <div className="flex gap-3">
+          <div className="relative bg-zinc-900 border border-zinc-700 rounded-2xl p-6 w-full max-w-sm mx-4 shadow-2xl">
+            <div className="flex items-center justify-between mb-1">
+              <h2 className="text-lg font-bold text-zinc-100">¿En qué mesa estás?</h2>
+              <button onClick={() => setModalMesa(false)} className="text-zinc-500 hover:text-zinc-100">
+                <X size={18} />
+              </button>
+            </div>
+            <p className="text-zinc-500 text-sm mb-5">Toca tu mesa para seleccionarla.</p>
+
+            <div className="space-y-4 max-h-72 overflow-y-auto pr-1">
+              {pisos.map((piso) => (
+                <div key={piso}>
+                  <p className="text-zinc-500 text-xs uppercase tracking-wider mb-2">Piso {piso}</p>
+                  <div className="grid grid-cols-5 gap-2">
+                    {mesas.filter((m) => m.piso === piso).map((m) => (
+                      <button
+                        key={m.id}
+                        onClick={() => setMesaSel(m)}
+                        className={`aspect-square rounded-xl text-sm font-bold transition-colors border ${
+                          mesaSel?.id === m.id
+                            ? 'bg-gold-500 text-zinc-950 border-gold-500'
+                            : 'bg-zinc-800 text-zinc-300 border-zinc-700 hover:border-gold-500 hover:text-gold-400'
+                        }`}
+                      >
+                        {m.numero}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {error && <p className="text-red-400 text-xs mt-4">{error}</p>}
+
+            <div className="flex gap-3 mt-5">
               <button
-                type="button"
                 onClick={() => setModalMesa(false)}
                 className="flex-1 py-2.5 border border-zinc-700 text-zinc-400 hover:bg-zinc-800 rounded-xl text-sm transition-colors"
               >
                 Cancelar
               </button>
               <button
-                type="submit"
-                disabled={!mesaNumero || enviando}
+                onClick={handleConfirmarPedido}
+                disabled={!mesaSel || enviando}
                 className="flex-1 py-2.5 bg-gold-500 hover:bg-gold-600 disabled:opacity-40 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl text-sm transition-colors"
               >
-                {enviando ? 'Enviando…' : 'Confirmar pedido'}
+                {enviando ? 'Redirigiendo a pago…' : mesaSel ? `Pagar · Mesa ${mesaSel.numero}` : 'Confirmar'}
               </button>
             </div>
-          </form>
+          </div>
         </div>
       )}
     </>

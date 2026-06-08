@@ -6,9 +6,8 @@ import TabProductos from './TabProductos'
 
 const TABS = ['Usuarios', 'Productos']
 
-export default function AdminClient({ productosIniciales, usuariosIniciales = [] }) {
-  const [tab, setTab]         = useState('Usuarios')
-  const [usuarios, setUsuarios] = useState(usuariosIniciales)
+export default function AdminClient({ productosIniciales, perfilesIniciales }) {
+  const [tab, setTab] = useState('Usuarios')
 
   const productosActivos = productosIniciales.filter((p) => p.disponible).length
 
@@ -22,8 +21,7 @@ export default function AdminClient({ productosIniciales, usuariosIniciales = []
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
         {[
-          { label: 'Usuarios totales',  valor: usuarios.length },
-          { label: 'Usuarios activos',  valor: usuarios.filter((u) => u.activo).length },
+          { label: 'Usuarios totales',  valor: perfilesIniciales.length },
           { label: 'Productos',         valor: productosIniciales.length },
           { label: 'Productos activos', valor: productosActivos },
         ].map((stat) => (
@@ -49,12 +47,8 @@ export default function AdminClient({ productosIniciales, usuariosIniciales = []
         ))}
       </div>
 
-      {tab === 'Usuarios' && (
-        <TabUsuarios usuarios={usuarios} onUsuariosChange={setUsuarios} />
-      )}
-      {tab === 'Productos' && (
-        <TabProductos productos={productosIniciales} />
-      )}
+      {tab === 'Usuarios' && <TabUsuarios perfiles={perfilesIniciales} />}
+      {tab === 'Productos' && <TabProductos productos={productosIniciales} />}
     </div>
   )
 }

@@ -1,7 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import { Crown, Users, Clock, CheckCircle } from 'lucide-react'
+import { useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
+import { Crown, Users, Clock } from 'lucide-react'
+import { iniciarPagoReserva } from '@/lib/actions/reservas'
 
 const ESTILOS_SALA = {
   'Sala Roja': {
@@ -35,11 +37,13 @@ const HORAS     = ['20:00', '21:00', '22:00', '23:00', '00:00', '01:00', '02:00'
 const DURACIONES = ['1 hora', '2 horas', '3 horas', '4 horas']
 
 export default function VipClient({ salas }) {
+  const router = useRouter()
   const [salaSeleccionada, setSalaSeleccionada] = useState(null)
   const [fecha, setFecha]       = useState('')
   const [hora, setHora]         = useState('')
   const [duracion, setDuracion] = useState('')
-  const [reservado, setReservado] = useState(false)
+  const [error, setError]         = useState(null)
+  const [isPending, startTransition] = useTransition()
 
   const sala   = salas.find((s) => s.id === salaSeleccionada)
   const horas  = duracion ? parseInt(duracion) : 0
@@ -48,26 +52,15 @@ export default function VipClient({ salas }) {
 
   function reservar() {
     if (!puedeReservar) return
-    setReservado(true)
-  }
-
-  if (reservado) {
-    return (
-      <div className="p-8 flex flex-col items-center justify-center min-h-full gap-6">
-        <CheckCircle size={64} className="text-emerald-400" />
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-zinc-100">¡Reserva confirmada!</h2>
-          <p className="text-zinc-400 mt-2">{sala.nombre} · {fecha} · {hora} · {duracion}</p>
-          <p className="text-gold-400 font-bold text-xl mt-2">{subtotal} € total</p>
-        </div>
-        <button
-          onClick={() => { setReservado(false); setSalaSeleccionada(null); setFecha(''); setHora(''); setDuracion('') }}
-          className="px-6 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-100 rounded-xl text-sm"
-        >
-          Nueva reserva
-        </button>
-      </div>
-    )
+    setError(null)
+    startTransition(async () => {
+      try {
+        const url = await iniciarPagoReserva({ sala_id: salaSeleccionada, fecha, hora, duracionHoras: horas })
+        router.push(url) // mandamos al usuario a la página de pago de Stripe
+      } catch (err) {
+        setError(err.message)
+      }
+    })
   }
 
   return (
@@ -159,12 +152,14 @@ export default function VipClient({ salas }) {
             </div>
           )}
 
+          {error && <p className="text-red-400 text-xs">{error}</p>}
+
           <button
             onClick={reservar}
-            disabled={!puedeReservar}
+            disabled={!puedeReservar || isPending}
             className="w-full py-2.5 bg-gold-500 hover:bg-gold-600 disabled:opacity-30 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl transition-colors"
           >
-            Confirmar reserva
+            {isPending ? 'Redirigiendo a pago…' : 'Reservar y pagar'}
           </button>
         </div>
       </div>
