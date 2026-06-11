@@ -70,7 +70,7 @@ export default function PaginaRegister() {
             </div>
           )}
 
-          <form className="space-y-4" onSubmit={handleSubmit}>
+          <form className="space-y-4" onSubmit={handleSubmit} noValidate>
             <div>
               <label className="text-zinc-500 text-xs block mb-1.5">Nombre completo</label>
               <input

@@ -163,15 +163,15 @@ Este botón es nuevo. Lo añadimos donde tengas el carrito de la carta (`compone
 import { iniciarPagoPedido } from '@/lib/actions/pedidos'
 import { useRouter } from 'next/navigation'
 
-export default function BotonPagarPedido({ carrito }) {
-  // carrito → [{ producto_id, nombre, precio_unit, cantidad }, ...]
+export default function BotonPagarPedido({ mesaId, items }) {
+  // items → [{ id, nombre, precio, cantidad }, ...] (formato del carritoStore)
   const router = useRouter()
 
-  const total = carrito.reduce((sum, p) => sum + p.precio_unit * p.cantidad, 0)
+  const total = items.reduce((sum, i) => sum + i.precio * i.cantidad, 0)
 
   async function handlePagar() {
     try {
-      const url = await iniciarPagoPedido(carrito)
+      const url = await iniciarPagoPedido({ mesaId, items })
       router.push(url)
     } catch (err) {
       alert(`Error: ${err.message}`)
@@ -179,7 +179,7 @@ export default function BotonPagarPedido({ carrito }) {
   }
 
   return (
-    <button onClick={handlePagar} disabled={carrito.length === 0}>
+    <button onClick={handlePagar} disabled={items.length === 0}>
       Pagar pedido {total.toFixed(2)} € →
     </button>
   )
@@ -334,48 +334,49 @@ export async function avanzarPedido(id, estadoActual) {
   revalidatePath('/staff')
 }
 
-// productos → [{ producto_id, nombre, precio_unit, cantidad }, ...]
-async function crearPedido(productos) {
+// items → [{ id, nombre, precio, cantidad, imagen_url }, ...] (formato del carritoStore)
+async function crearPedido({ mesaId, items }) {
   const supabase = await createClient()
 
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('No autenticado')
 
-  const total = productos.reduce((sum, p) => sum + p.precio_unit * p.cantidad, 0)
+  const total = items.reduce((sum, i) => sum + i.precio * i.cantidad, 0)
 
   const { data: pedido, error } = await supabase
     .from('pedidos')
-    .insert({ cliente_id: user.id, total, estado: 'pendiente' })
+    .insert({ mesa_id: mesaId, cliente_id: user.id, estado: 'pendiente', total })
     .select()
     .single()
 
   if (error) throw new Error(error.message)
 
-  await supabase.from('pedido_items').insert(
-    productos.map((p) => ({
+  const { error: itemsError } = await supabase.from('pedido_items').insert(
+    items.map((i) => ({
       pedido_id:   pedido.id,
-      producto_id: p.producto_id,
-      cantidad:    p.cantidad,
-      precio_unit: p.precio_unit,
+      producto_id: i.id,
+      cantidad:    i.cantidad,
+      precio_unit: i.precio,
     }))
   )
 
+  if (itemsError) throw new Error(itemsError.message)
   return pedido
 }
 
 // Crea el pedido y, a continuación, la sesión de pago en Stripe
-export async function iniciarPagoPedido(productos) {
+export async function iniciarPagoPedido({ mesaId, items }) {
   const supabase = await createClient()
 
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('No autenticado')
 
-  const pedido = await crearPedido(productos)
+  const pedido = await crearPedido({ mesaId, items })
 
   return crearCheckout({
     tipo: 'pedido',
     id: pedido.id,
-    items: productos.map((p) => ({ nombre: p.nombre, precio: p.precio_unit, cantidad: p.cantidad })),
+    items: items.map((i) => ({ nombre: i.nombre, precio: i.precio, cantidad: i.cantidad })),
     user,
   })
 }
@@ -472,10 +473,15 @@ export async function POST(req) {
       payment_intent_data: {
         setup_future_usage: 'on_session', // guarda la tarjeta para la próxima vez
       },
+      // Sin esto, Checkout no ofrece las tarjetas ya guardadas del Customer
+      saved_payment_method_options: {
+        payment_method_save: 'enabled',
+        allow_redisplay_filters: ['always'],
+      },
       success_url: tipo === 'reserva'
         ? `${baseUrl}/reserva/exito?reserva_id=${id}`
         : `${baseUrl}/pedido/exito?pedido_id=${id}`,
-      cancel_url: `${baseUrl}/${tipo}/cancelado`,
+      cancel_url: `${baseUrl}/${tipo === 'reserva' ? 'vip' : ''}`,
       // Guardamos tipo e ID para saber qué actualizar cuando Stripe nos avise
       metadata: { tipo, id, cliente_id: clienteId },
       expires_at: Math.floor(Date.now() / 1000) + 1800, // caduca en 30 minutos
@@ -712,4 +718,4 @@ Añade soporte para **reembolsos**: si el cliente cancela con más de 24 horas d
 
 ## Navegación
 
-[← 04 — Estado con Zustand](./04-estado-con-zustand.md) · [06 — PWA y Entradas QR →](./06-pwa-y-entradas-qr.md)
+[← 06 — Productos](./06-productos.md) · [09 — PWA y Entradas QR →](./09-pwa-y-entradas-qr.md)

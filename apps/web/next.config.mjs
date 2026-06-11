@@ -2,6 +2,7 @@
 const nextConfig = {
   /* config options here */
   images: {
+    unoptimized: true,
     dangerouslyAllowLocalIP: true,
     remotePatterns: [
       {
