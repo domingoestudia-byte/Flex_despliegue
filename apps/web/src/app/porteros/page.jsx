@@ -57,11 +57,11 @@ export default function PaginaPorteros() {
                 value={codigo}
                 onChange={e => setCodigo(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && escanear()}
-                className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500"
+                className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-amber-500"
               />
               <button
                 onClick={escanear}
-                className="px-4 py-2 bg-gold-500 hover:bg-gold-600 text-zinc-950 text-sm font-semibold rounded-lg"
+                className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-zinc-950 text-sm font-semibold rounded-lg"
               >
                 <Search size={16} />
               </button>

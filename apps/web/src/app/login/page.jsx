@@ -70,7 +70,7 @@ export default function PaginaLogin() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 required
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-amber-500 transition-colors"
               />
             </div>
             <div>
@@ -82,18 +82,18 @@ export default function PaginaLogin() {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 required
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-amber-500 transition-colors"
               />
             </div>
 
             <div className="flex justify-end">
-              <a href="#" className="text-xs text-gold-500 hover:text-gold-400">Olvidaste tu contrasena?</a>
+              <a href="#" className="text-xs text-amber-500 hover:text-amber-400">Olvidaste tu contrasena?</a>
             </div>
 
             <button
               type="submit"
               disabled={cargando}
-              className="w-full py-3 bg-gold-500 hover:bg-gold-600 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl transition-colors mt-2"
+              className="w-full py-3 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl transition-colors mt-2"
             >
               {cargando ? 'Entrando…' : 'Entrar'}
             </button>
@@ -101,7 +101,7 @@ export default function PaginaLogin() {
 
           <p className="text-center text-zinc-500 text-sm mt-8">
             No tienes cuenta?{' '}
-            <Link href="/register" className="text-gold-400 hover:text-gold-300 font-medium">
+            <Link href="/register" className="text-amber-400 hover:text-amber-300 font-medium">
               Registrate
             </Link>
           </p>

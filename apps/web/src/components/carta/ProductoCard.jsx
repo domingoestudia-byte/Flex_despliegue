@@ -24,7 +24,7 @@ export default function ProductoCard({ producto }) {
         <p className="text-xs text-zinc-600 mt-0.5 capitalize">{producto.categoria}</p>
       </div>
       <div className="flex items-center justify-between mt-auto">
-        <span className="text-gold-400 font-semibold">{producto.precio.toFixed(2)} €</span>
+        <span className="text-amber-400 font-semibold">{producto.precio.toFixed(2)} €</span>
         {enCarrito ? (
           <div className="flex items-center gap-2">
             <button
@@ -36,7 +36,7 @@ export default function ProductoCard({ producto }) {
             <span className="text-zinc-100 text-sm w-5 text-center font-medium">{enCarrito.cantidad}</span>
             <button
               onClick={() => agregarItem(producto)}
-              className="w-7 h-7 rounded-full bg-gold-500 flex items-center justify-center hover:bg-gold-600 transition-colors"
+              className="w-7 h-7 rounded-full bg-amber-500 flex items-center justify-center hover:bg-amber-600 transition-colors"
             >
               <Plus size={13} className="text-zinc-950" />
             </button>
@@ -44,7 +44,7 @@ export default function ProductoCard({ producto }) {
         ) : (
           <button
             onClick={() => agregarItem(producto)}
-            className="flex items-center gap-1 px-3 py-1 bg-gold-500 hover:bg-gold-600 text-zinc-950 text-xs font-semibold rounded-lg transition-colors"
+            className="flex items-center gap-1 px-3 py-1 bg-amber-500 hover:bg-amber-600 text-zinc-950 text-xs font-semibold rounded-lg transition-colors"
           >
             <Plus size={12} /> Añadir
           </button>

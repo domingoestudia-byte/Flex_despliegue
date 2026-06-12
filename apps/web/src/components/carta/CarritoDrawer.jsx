@@ -44,11 +44,11 @@ export default function CarritoDrawer({ mesas = [] }) {
       {/* Botón flotante */}
       <button
         onClick={() => setCarritoAbierto(true)}
-        className="fixed top-20 right-10 md:top-auto md:bottom-6 md:right-6 z-50 w-14 h-14 bg-gold-500 hover:bg-gold-600 text-zinc-950 rounded-full shadow-lg flex items-center justify-center transition-colors"
+        className="fixed top-20 right-10 md:top-auto md:bottom-6 md:right-6 z-50 w-14 h-14 bg-amber-500 hover:bg-amber-600 text-zinc-950 rounded-full shadow-lg flex items-center justify-center transition-colors"
       >
         <ShoppingCart size={22} />
         {totalItems > 0 && (
-          <span className="absolute -top-1 -right-1 w-5 h-5 bg-zinc-950 text-gold-400 text-xs font-bold rounded-full flex items-center justify-center border border-gold-500">
+          <span className="absolute -top-1 -right-1 w-5 h-5 bg-zinc-950 text-amber-400 text-xs font-bold rounded-full flex items-center justify-center border border-amber-500">
             {totalItems}
           </span>
         )}
@@ -66,10 +66,10 @@ export default function CarritoDrawer({ mesas = [] }) {
         }`}
       >
         <div className="px-6 py-5 border-b border-zinc-800 flex items-center gap-2">
-          <ShoppingCart size={18} className="text-gold-400" />
+          <ShoppingCart size={18} className="text-amber-400" />
           <h2 className="font-semibold text-zinc-100">Mi pedido</h2>
           {totalItems > 0 && (
-            <span className="bg-gold-500 text-zinc-950 text-xs font-bold px-2 py-0.5 rounded-full">{totalItems}</span>
+            <span className="bg-amber-500 text-zinc-950 text-xs font-bold px-2 py-0.5 rounded-full">{totalItems}</span>
           )}
           <button onClick={() => setCarritoAbierto(false)} className="ml-auto text-zinc-500 hover:text-zinc-100 transition-colors">
             <X size={20} />
@@ -98,7 +98,7 @@ export default function CarritoDrawer({ mesas = [] }) {
                     <p className="text-sm text-zinc-100 font-medium truncate">{item.nombre}</p>
                     <p className="text-xs text-zinc-500">{item.cantidad} × {item.precio.toFixed(2)} €</p>
                   </div>
-                  <span className="text-sm text-gold-400 font-semibold shrink-0">
+                  <span className="text-sm text-amber-400 font-semibold shrink-0">
                     {(item.precio * item.cantidad).toFixed(2)} €
                   </span>
                   <button onClick={() => eliminarItem(item.id)} className="text-zinc-600 hover:text-red-400 transition-colors shrink-0">
@@ -119,7 +119,7 @@ export default function CarritoDrawer({ mesas = [] }) {
             </div>
             <button
               onClick={() => { setError(null); setModalMesa(true) }}
-              className="w-full py-3 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl transition-colors"
+              className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-zinc-950 font-bold rounded-xl transition-colors"
             >
               Enviar pedido
             </button>
@@ -151,8 +151,8 @@ export default function CarritoDrawer({ mesas = [] }) {
                         onClick={() => setMesaSel(m)}
                         className={`aspect-square rounded-xl text-sm font-bold transition-colors border ${
                           mesaSel?.id === m.id
-                            ? 'bg-gold-500 text-zinc-950 border-gold-500'
-                            : 'bg-zinc-800 text-zinc-300 border-zinc-700 hover:border-gold-500 hover:text-gold-400'
+                            ? 'bg-amber-500 text-zinc-950 border-amber-500'
+                            : 'bg-zinc-800 text-zinc-300 border-zinc-700 hover:border-amber-500 hover:text-amber-400'
                         }`}
                       >
                         {m.numero}
@@ -175,7 +175,7 @@ export default function CarritoDrawer({ mesas = [] }) {
               <button
                 onClick={handleConfirmarPedido}
                 disabled={!mesaSel || enviando}
-                className="flex-1 py-2.5 bg-gold-500 hover:bg-gold-600 disabled:opacity-40 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl text-sm transition-colors"
+                className="flex-1 py-2.5 bg-amber-500 hover:bg-amber-600 disabled:opacity-40 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl text-sm transition-colors"
               >
                 {enviando ? 'Redirigiendo a pago…' : mesaSel ? `Pagar · Mesa ${mesaSel.numero}` : 'Confirmar'}
               </button>

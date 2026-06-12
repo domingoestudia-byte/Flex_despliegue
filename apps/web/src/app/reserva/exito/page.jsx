@@ -26,10 +26,10 @@ export default async function PaginaExitoReserva({ searchParams }) {
       <div className="text-zinc-400 space-y-1">
         <p>Sala: {reserva.salas_vip.nombre}</p>
         <p>Inicio: {new Date(reserva.inicio).toLocaleString('es-ES')}</p>
-        <p className="text-gold-400 font-bold text-xl">{reserva.total} € pagados</p>
+        <p className="text-amber-400 font-bold text-xl">{reserva.total} € pagados</p>
       </div>
       <p className="text-zinc-500 text-sm">Tu entrada con código QR ya está disponible en tu perfil.</p>
-      <Link href="/mi-area" className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl text-sm">
+      <Link href="/mi-area" className="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-zinc-950 font-bold rounded-xl text-sm">
         Ver mis reservas
       </Link>
     </div>

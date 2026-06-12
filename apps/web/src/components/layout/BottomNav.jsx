@@ -40,7 +40,7 @@ export default function BottomNav({ rol }) {
                     key={href}
                     href={href}
                     onClick={() => setGestionAbierta(false)}
-                    className={`flex flex-col items-center gap-1.5 py-3 rounded-xl transition-colors ${activo ? 'bg-gold-500/20 text-gold-400' : 'text-zinc-400 hover:bg-zinc-800'}`}
+                    className={`flex flex-col items-center gap-1.5 py-3 rounded-xl transition-colors ${activo ? 'bg-amber-500/20 text-amber-400' : 'text-zinc-400 hover:bg-zinc-800'}`}
                   >
                     <Icon size={22} />
                     <span className="text-[11px] font-medium">{label}</span>
@@ -58,8 +58,8 @@ export default function BottomNav({ rol }) {
           const activo = pathname === href
           return (
             <Link key={href} href={href} className="flex-1 flex flex-col items-center py-3 gap-1">
-              <Icon size={21} className={activo ? 'text-gold-400' : 'text-zinc-600'} />
-              <span className={`text-[10px] font-medium ${activo ? 'text-gold-400' : 'text-zinc-600'}`}>{label}</span>
+              <Icon size={21} className={activo ? 'text-amber-400' : 'text-zinc-600'} />
+              <span className={`text-[10px] font-medium ${activo ? 'text-amber-400' : 'text-zinc-600'}`}>{label}</span>
             </Link>
           )
         })}
@@ -69,13 +69,13 @@ export default function BottomNav({ rol }) {
           onClick={() => setGestionAbierta(v => !v)}
           className="flex-1 flex flex-col items-center -translate-y-3 gap-1"
         >
-          <span className={`w-13 h-13 rounded-full flex items-center justify-center shadow-lg transition-colors ${gestionActiva || gestionAbierta ? 'bg-gold-500' : 'bg-zinc-800 hover:bg-zinc-700'}`}>
+          <span className={`w-13 h-13 rounded-full flex items-center justify-center shadow-lg transition-colors ${gestionActiva || gestionAbierta ? 'bg-amber-500' : 'bg-zinc-800 hover:bg-zinc-700'}`}>
             {gestionAbierta
               ? <X size={22} className={gestionActiva || gestionAbierta ? 'text-zinc-950' : 'text-zinc-300'} />
               : <LayoutGrid size={22} className={gestionActiva || gestionAbierta ? 'text-zinc-950' : 'text-zinc-300'} />
             }
           </span>
-          <span className={`text-[10px] font-medium ${gestionActiva || gestionAbierta ? 'text-gold-400' : 'text-zinc-600'}`}>
+          <span className={`text-[10px] font-medium ${gestionActiva || gestionAbierta ? 'text-amber-400' : 'text-zinc-600'}`}>
             Gestión
           </span>
         </button>}

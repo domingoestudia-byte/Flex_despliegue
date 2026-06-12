@@ -18,11 +18,11 @@ const ESTILOS_SALA = {
     acento: 'text-zinc-300',
     badge:  'bg-zinc-600/30 text-zinc-400',
   },
-  'Sala Gold': {
+  'Sala amber': {
     color:  'from-yellow-900/40 to-amber-800/20',
-    borde:  'border-gold-500/40',
-    acento: 'text-gold-400',
-    badge:  'bg-gold-500/20 text-gold-400',
+    borde:  'border-amber-500/40',
+    acento: 'text-amber-400',
+    badge:  'bg-amber-500/20 text-amber-400',
   },
 }
 
@@ -80,7 +80,7 @@ export default function VipClient({ salas }) {
               disabled={!s.activa}
               className={`bg-linear-to-br ${est.color} border ${est.borde} rounded-2xl p-6 text-left transition-all ${
                 salaSeleccionada === s.id
-                  ? 'ring-2 ring-gold-500 scale-[1.02]'
+                  ? 'ring-2 ring-amber-500 scale-[1.02]'
                   : s.activa ? 'hover:scale-[1.01] cursor-pointer' : 'opacity-50 cursor-not-allowed'
               }`}
             >
@@ -115,7 +115,7 @@ export default function VipClient({ salas }) {
               value={fecha}
               onChange={(e) => setFecha(e.target.value)}
               disabled={!salaSeleccionada}
-              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500 disabled:opacity-40"
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-amber-500 disabled:opacity-40"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -125,7 +125,7 @@ export default function VipClient({ salas }) {
                 value={hora}
                 onChange={(e) => setHora(e.target.value)}
                 disabled={!salaSeleccionada}
-                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500 disabled:opacity-40"
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-amber-500 disabled:opacity-40"
               >
                 <option value="">— Elegir —</option>
                 {HORAS.map((h) => <option key={h}>{h}</option>)}
@@ -137,7 +137,7 @@ export default function VipClient({ salas }) {
                 value={duracion}
                 onChange={(e) => setDuracion(e.target.value)}
                 disabled={!salaSeleccionada}
-                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500 disabled:opacity-40"
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-amber-500 disabled:opacity-40"
               >
                 <option value="">— Elegir —</option>
                 {DURACIONES.map((d) => <option key={d}>{d}</option>)}
@@ -148,7 +148,7 @@ export default function VipClient({ salas }) {
           {subtotal > 0 && (
             <div className="flex justify-between items-center pt-2 border-t border-zinc-800">
               <span className="text-zinc-400 text-sm">Total estimado</span>
-              <span className="text-gold-400 font-bold text-lg">{subtotal} €</span>
+              <span className="text-amber-400 font-bold text-lg">{subtotal} €</span>
             </div>
           )}
 
@@ -157,7 +157,7 @@ export default function VipClient({ salas }) {
           <button
             onClick={reservar}
             disabled={!puedeReservar || isPending}
-            className="w-full py-2.5 bg-gold-500 hover:bg-gold-600 disabled:opacity-30 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl transition-colors"
+            className="w-full py-2.5 bg-amber-500 hover:bg-amber-600 disabled:opacity-30 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl transition-colors"
           >
             {isPending ? 'Redirigiendo a pago…' : 'Reservar y pagar'}
           </button>

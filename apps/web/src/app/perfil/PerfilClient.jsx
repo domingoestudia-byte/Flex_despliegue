@@ -137,13 +137,13 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
       {/* Avatar */}
       <div className="flex items-center gap-5 mb-8">
         <div className="relative">
-          <div className="w-20 h-20 rounded-full bg-gold-500/20 border-2 border-gold-500/40 overflow-hidden flex items-center justify-center">
+          <div className="w-20 h-20 rounded-full bg-amber-500/20 border-2 border-amber-500/40 overflow-hidden flex items-center justify-center">
             {avatar
               ? <img src={avatar} alt="Avatar" className="w-full h-full object-cover" />
-              : <span className="text-3xl font-bold text-gold-400">{nombre?.[0]?.toUpperCase() ?? '?'}</span>
+              : <span className="text-3xl font-bold text-amber-400">{nombre?.[0]?.toUpperCase() ?? '?'}</span>
             }
           </div>
-          <label className="absolute -bottom-1 -right-1 w-7 h-7 bg-gold-500 hover:bg-gold-600 rounded-full flex items-center justify-center cursor-pointer transition-colors">
+          <label className="absolute -bottom-1 -right-1 w-7 h-7 bg-amber-500 hover:bg-amber-600 rounded-full flex items-center justify-center cursor-pointer transition-colors">
             <Camera size={13} className="text-zinc-950" />
             <input type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
           </label>
@@ -163,7 +163,7 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${tab === t.id ? 'bg-gold-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'}`}
+            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${tab === t.id ? 'bg-amber-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'}`}
           >
             {t.label}
           </button>
@@ -194,7 +194,7 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
                 <label className="text-zinc-500 text-xs block mb-1.5">{label}</label>
                 <input type={type} value={perfil[key]}
                   onChange={e => setPerfil(p => ({ ...p, [key]: e.target.value }))}
-                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-amber-500 transition-colors"
                 />
               </div>
             ))}
@@ -203,17 +203,17 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
             <label className="text-zinc-500 text-xs block mb-1.5">Email</label>
             <input type="email" value={perfil.email}
               onChange={e => setPerfil(p => ({ ...p, email: e.target.value }))}
-              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-amber-500 transition-colors"
             />
           </div>
           <div>
             <label className="text-zinc-500 text-xs block mb-1.5">Fecha de nacimiento</label>
             <input type="date" value={perfil.fechaNac}
               onChange={e => setPerfil(p => ({ ...p, fechaNac: e.target.value }))}
-              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-amber-500 transition-colors"
             />
           </div>
-          <button type="submit" disabled={isPending} className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 disabled:opacity-50 text-zinc-950 font-bold rounded-xl text-sm transition-colors">
+          <button type="submit" disabled={isPending} className="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-zinc-950 font-bold rounded-xl text-sm transition-colors">
             {isPending ? 'Guardando…' : 'Guardar cambios'}
           </button>
         </form>
@@ -223,7 +223,7 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
       {tab === 'pago' && (
         <div className="space-y-4">
           {tarjetas.map(t => (
-            <div key={t.id} className={`bg-zinc-900 border rounded-2xl p-5 flex items-center gap-4 ${t.predeterminada ? 'border-gold-500/50' : 'border-zinc-800'}`}>
+            <div key={t.id} className={`bg-zinc-900 border rounded-2xl p-5 flex items-center gap-4 ${t.predeterminada ? 'border-amber-500/50' : 'border-zinc-800'}`}>
               <div className="w-14 h-10 bg-zinc-800 rounded-lg flex items-center justify-center shrink-0 border border-zinc-700">
                 {iconoRed(t.tipo)}
               </div>
@@ -233,8 +233,8 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
               </div>
               <div className="flex items-center gap-3 shrink-0">
                 {t.predeterminada
-                  ? <span className="text-xs bg-gold-500/20 text-gold-400 px-2 py-0.5 rounded-full">Predeterminada</span>
-                  : <button onClick={() => predeterminar(t.id)} className="text-xs text-zinc-500 hover:text-gold-400 transition-colors">Usar por defecto</button>
+                  ? <span className="text-xs bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-full">Predeterminada</span>
+                  : <button onClick={() => predeterminar(t.id)} className="text-xs text-zinc-500 hover:text-amber-400 transition-colors">Usar por defecto</button>
                 }
                 <button onClick={() => eliminarTarjeta(t.id)} className="text-zinc-600 hover:text-red-400 transition-colors">
                   <Trash2 size={15} />
@@ -246,12 +246,12 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
           {nuevaTarjeta ? (
             <form onSubmit={agregarTarjeta} className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 space-y-4">
               <div className="flex items-center gap-2 mb-2">
-                <CreditCard size={16} className="text-gold-400" />
+                <CreditCard size={16} className="text-amber-400" />
                 <h3 className="text-zinc-100 font-semibold text-sm">Nueva tarjeta</h3>
               </div>
               <div className="h-36 bg-linear-to-br from-zinc-700 to-zinc-800 rounded-xl p-5 flex flex-col justify-between border border-zinc-600 mb-2">
                 <div className="flex justify-between items-start">
-                  <div className="w-8 h-6 bg-gold-500/60 rounded-sm" />
+                  <div className="w-8 h-6 bg-amber-500/60 rounded-sm" />
                   {iconoRed(formTarjeta.numero.startsWith('4') ? 'Visa' : 'Mastercard')}
                 </div>
                 <div>
@@ -268,14 +268,14 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
                 <label className="text-zinc-500 text-xs block mb-1.5">Número de tarjeta</label>
                 <input placeholder="1234 5678 9012 3456" value={formTarjeta.numero}
                   onChange={e => setFormTarjeta(p => ({ ...p, numero: e.target.value }))} maxLength={19}
-                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 font-mono outline-none focus:border-gold-500 transition-colors"
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 font-mono outline-none focus:border-amber-500 transition-colors"
                 />
               </div>
               <div>
                 <label className="text-zinc-500 text-xs block mb-1.5">Titular</label>
                 <input placeholder="ALEX GARCÍA" value={formTarjeta.titular}
                   onChange={e => setFormTarjeta(p => ({ ...p, titular: e.target.value.toUpperCase() }))}
-                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-amber-500 transition-colors"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -283,14 +283,14 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
                   <label className="text-zinc-500 text-xs block mb-1.5">Caducidad</label>
                   <input placeholder="MM/AA" value={formTarjeta.expira}
                     onChange={e => setFormTarjeta(p => ({ ...p, expira: e.target.value }))} maxLength={5}
-                    className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 font-mono outline-none focus:border-gold-500 transition-colors"
+                    className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 font-mono outline-none focus:border-amber-500 transition-colors"
                   />
                 </div>
                 <div>
                   <label className="text-zinc-500 text-xs block mb-1.5">CVV</label>
                   <input placeholder="•••" type="password" value={formTarjeta.cvv}
                     onChange={e => setFormTarjeta(p => ({ ...p, cvv: e.target.value }))} maxLength={4}
-                    className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 font-mono outline-none focus:border-gold-500 transition-colors"
+                    className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 font-mono outline-none focus:border-amber-500 transition-colors"
                   />
                 </div>
               </div>
@@ -303,14 +303,14 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
                   Cancelar
                 </button>
                 <button type="submit"
-                  className="flex-1 py-2.5 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl text-sm transition-colors">
+                  className="flex-1 py-2.5 bg-amber-500 hover:bg-amber-600 text-zinc-950 font-bold rounded-xl text-sm transition-colors">
                   Guardar tarjeta
                 </button>
               </div>
             </form>
           ) : (
             <button onClick={() => setNuevaTarjeta(true)}
-              className="w-full py-3 border border-dashed border-zinc-700 hover:border-gold-500/50 text-zinc-500 hover:text-gold-400 rounded-2xl text-sm flex items-center justify-center gap-2 transition-colors">
+              className="w-full py-3 border border-dashed border-zinc-700 hover:border-amber-500/50 text-zinc-500 hover:text-amber-400 rounded-2xl text-sm flex items-center justify-center gap-2 transition-colors">
               <Plus size={16} /> Añadir tarjeta
             </button>
           )}
@@ -322,7 +322,7 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
         <div className="space-y-4">
           <form onSubmit={guardarContrasena} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-4">
             <div className="flex items-center gap-2 mb-2">
-              <Lock size={16} className="text-gold-400" />
+              <Lock size={16} className="text-amber-400" />
               <h3 className="text-zinc-100 font-semibold text-sm">Cambiar contraseña</h3>
             </div>
             {[
@@ -334,18 +334,18 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
                 <label className="text-zinc-500 text-xs block mb-1.5">{label}</label>
                 <input type="password" placeholder="••••••••" value={pass[key]}
                   onChange={e => setPass(p => ({ ...p, [key]: e.target.value }))}
-                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-gold-500 transition-colors"
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-100 outline-none focus:border-amber-500 transition-colors"
                 />
               </div>
             ))}
-            <button type="submit" disabled={isPending} className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 disabled:opacity-50 text-zinc-950 font-bold rounded-xl text-sm transition-colors">
+            <button type="submit" disabled={isPending} className="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-zinc-950 font-bold rounded-xl text-sm transition-colors">
               {isPending ? 'Guardando…' : 'Actualizar contraseña'}
             </button>
           </form>
 
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Shield size={16} className="text-gold-400" />
+              <Shield size={16} className="text-amber-400" />
               <h3 className="text-zinc-100 font-semibold text-sm">Sesiones activas</h3>
             </div>
             {[
@@ -382,7 +382,7 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
       {tab === 'notificaciones' && (
         <form onSubmit={guardar} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-5">
-            <Bell size={16} className="text-gold-400" />
+            <Bell size={16} className="text-amber-400" />
             <h3 className="text-zinc-100 font-semibold text-sm">Preferencias de notificación</h3>
           </div>
           <div className="divide-y divide-zinc-800">
@@ -400,14 +400,14 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
                 </div>
                 <button type="button"
                   onClick={() => setNotifs(n => ({ ...n, [key]: !n[key] }))}
-                  className={`relative w-10 h-6 rounded-full transition-colors shrink-0 ml-4 ${notifs[key] ? 'bg-gold-500' : 'bg-zinc-700'}`}
+                  className={`relative w-10 h-6 rounded-full transition-colors shrink-0 ml-4 ${notifs[key] ? 'bg-amber-500' : 'bg-zinc-700'}`}
                 >
                   <span className={`absolute top-1 left-1 w-4 h-4 rounded-full bg-white transition-transform ${notifs[key] ? 'translate-x-4' : 'translate-x-0'}`} />
                 </button>
               </div>
             ))}
           </div>
-          <button type="submit" className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-zinc-950 font-bold rounded-xl text-sm transition-colors mt-4">
+          <button type="submit" className="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-zinc-950 font-bold rounded-xl text-sm transition-colors mt-4">
             Guardar preferencias
           </button>
         </form>

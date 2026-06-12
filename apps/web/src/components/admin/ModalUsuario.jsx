@@ -19,12 +19,12 @@ export default function ModalUsuario({ form, setForm, onGuardar, onClose, isPend
             placeholder="Nombre completo"
             value={form.nombre}
             onChange={(e) => setForm((p) => ({ ...p, nombre: e.target.value }))}
-            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-amber-500"
           />
           <select
             value={form.rol}
             onChange={(e) => setForm((p) => ({ ...p, rol: e.target.value }))}
-            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-amber-500"
           >
             {ROLES.map((r) => <option key={r}>{r}</option>)}
           </select>
@@ -49,7 +49,7 @@ export default function ModalUsuario({ form, setForm, onGuardar, onClose, isPend
           <button
             onClick={onGuardar}
             disabled={isPending}
-            className="flex-1 py-2 rounded-lg bg-gold-500 hover:bg-gold-600 text-zinc-950 text-sm font-semibold disabled:opacity-50"
+            className="flex-1 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-zinc-950 text-sm font-semibold disabled:opacity-50"
           >
             {isPending ? 'Guardando…' : 'Guardar'}
           </button>

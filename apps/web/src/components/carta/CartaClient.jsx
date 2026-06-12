@@ -29,7 +29,7 @@ export default function CartaClient({ productos, mesas }) {
               key={c}
               onClick={() => setCat(c)}
               className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${cat === c
-                  ? 'bg-gold-500 text-zinc-950'
+                  ? 'bg-amber-500 text-zinc-950'
                   : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
                 }`}
             >

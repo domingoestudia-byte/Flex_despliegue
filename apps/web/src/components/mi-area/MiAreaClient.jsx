@@ -49,7 +49,7 @@ export default function MiAreaClient({ perfil, pedidos, reservas }) {
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${tab === t.id ? 'bg-gold-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${tab === t.id ? 'bg-amber-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
                 }`}
             >
               <Icon size={15} /> {t.label}
@@ -69,7 +69,7 @@ export default function MiAreaClient({ perfil, pedidos, reservas }) {
             return (
               <div key={r.id} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
                 <div className="flex items-start gap-3 mb-3">
-                  <MapPin size={18} className="text-gold-400 mt-0.5 shrink-0" />
+                  <MapPin size={18} className="text-amber-400 mt-0.5 shrink-0" />
                   <div>
                     <h3 className="font-semibold text-zinc-100">{r.salas_vip?.nombre}</h3>
                     <p className="text-zinc-500 text-sm">{r.salas_vip?.descripcion}</p>
@@ -117,7 +117,7 @@ export default function MiAreaClient({ perfil, pedidos, reservas }) {
                 </ul>
                 <div className="flex justify-between items-center mt-3 pt-3 border-t border-zinc-800">
                   <span className="text-zinc-500 text-xs">Total</span>
-                  <span className="text-gold-400 font-bold">{Number(total).toFixed(2)} €</span>
+                  <span className="text-amber-400 font-bold">{Number(total).toFixed(2)} €</span>
                 </div>
               </div>
             )

@@ -84,7 +84,7 @@ export default function StaffClient({ pedidosIniciales }) {
             key={f}
             onClick={() => setFiltro(f)}
             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              filtro === f ? 'bg-gold-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+              filtro === f ? 'bg-amber-500 text-zinc-950' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
             }`}
           >
             {LABEL_FILTRO[f]}

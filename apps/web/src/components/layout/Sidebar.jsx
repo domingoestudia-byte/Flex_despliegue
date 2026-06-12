@@ -28,7 +28,7 @@ function NavGroup({ title, items, pathname }) {
             key={href}
             href={href}
             className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${activo
-                ? 'bg-gold-500/20 text-gold-400'
+                ? 'bg-amber-500/20 text-amber-400'
                 : 'text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100'
               }`}
           >
@@ -64,7 +64,7 @@ export default function Sidebar({ rol, nombre, avatarUrl }) {
         href="/perfil"
         className="px-4 py-4 border-t border-zinc-800 flex items-center gap-3 hover:bg-zinc-800/50 transition-colors w-full text-left group"
       >
-        <div className="w-8 h-8 rounded-full bg-gold-500/30 border border-gold-500/40 overflow-hidden flex items-center justify-center text-gold-400 text-sm font-bold shrink-0">
+        <div className="w-8 h-8 rounded-full bg-amber-500/30 border border-amber-500/40 overflow-hidden flex items-center justify-center text-amber-400 text-sm font-bold shrink-0">
           {avatarUrl
             ? <img src={avatarUrl} alt={nombre} className="w-full h-full object-cover" />
             : nombre?.[0]?.toUpperCase() ?? '?'

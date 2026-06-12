@@ -76,7 +76,7 @@ export default function TabProductos({ productos }) {
         <h2 className="text-lg font-semibold text-zinc-100">Productos</h2>
         <button
           onClick={abrirCrear}
-          className="flex items-center gap-2 px-4 py-2 bg-gold-500 hover:bg-gold-600 text-zinc-950 text-sm font-semibold rounded-lg"
+          className="flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-zinc-950 text-sm font-semibold rounded-lg"
         >
           <Plus size={16} /> Nuevo producto
         </button>
@@ -101,7 +101,7 @@ export default function TabProductos({ productos }) {
               <tr key={p.id} className="border-b border-zinc-800/50 hover:bg-zinc-800/30">
                 <td className="px-4 py-3 text-zinc-100 font-medium">{p.nombre}</td>
                 <td className="px-4 py-3 text-zinc-400 capitalize">{p.categoria}</td>
-                <td className="px-4 py-3 text-gold-400 font-semibold">{p.precio.toFixed(2)} €</td>
+                <td className="px-4 py-3 text-amber-400 font-semibold">{p.precio.toFixed(2)} €</td>
                 <td className="px-4 py-3">
                   <span className={`text-xs px-2 py-0.5 rounded-full ${p.disponible ? 'bg-emerald-500/20 text-emerald-400' : 'bg-zinc-700 text-zinc-500'}`}>
                     {p.disponible ? 'Disponible' : 'Agotado'}
@@ -127,7 +127,7 @@ export default function TabProductos({ productos }) {
               <p className="text-zinc-100 font-medium text-sm truncate">{p.nombre}</p>
               <div className="flex items-center gap-2 mt-1 flex-wrap">
                 <span className="text-zinc-500 text-xs capitalize">{p.categoria}</span>
-                <span className="text-gold-400 text-xs font-semibold">{p.precio.toFixed(2)} €</span>
+                <span className="text-amber-400 text-xs font-semibold">{p.precio.toFixed(2)} €</span>
                 <span className={`text-xs px-2 py-0.5 rounded-full ${p.disponible ? 'bg-emerald-500/20 text-emerald-400' : 'bg-zinc-700 text-zinc-500'}`}>
                   {p.disponible ? 'Disponible' : 'Agotado'}
                 </span>

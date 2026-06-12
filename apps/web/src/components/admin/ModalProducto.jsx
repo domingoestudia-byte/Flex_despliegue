@@ -33,7 +33,7 @@ export default function ModalProducto({ formP, setFormP, editandoId, isPending, 
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
-            className="w-full h-32 rounded-xl border-2 border-dashed border-zinc-700 hover:border-gold-500 transition-colors overflow-hidden flex items-center justify-center relative"
+            className="w-full h-32 rounded-xl border-2 border-dashed border-zinc-700 hover:border-amber-500 transition-colors overflow-hidden flex items-center justify-center relative"
           >
             {preview ? (
               <img src={preview} alt="preview" className="w-full h-full object-cover" />
@@ -57,13 +57,13 @@ export default function ModalProducto({ formP, setFormP, editandoId, isPending, 
             placeholder="Nombre del producto"
             value={formP.nombre}
             onChange={(e) => setFormP((p) => ({ ...p, nombre: e.target.value }))}
-            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-amber-500"
           />
           <input
             placeholder="Descripción (opcional)"
             value={formP.descripcion}
             onChange={(e) => setFormP((p) => ({ ...p, descripcion: e.target.value }))}
-            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-amber-500"
           />
           <div className="grid grid-cols-2 gap-3">
             <input
@@ -74,12 +74,12 @@ export default function ModalProducto({ formP, setFormP, editandoId, isPending, 
               placeholder="Precio (€)"
               value={formP.precio}
               onChange={(e) => setFormP((p) => ({ ...p, precio: e.target.value }))}
-              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500"
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-amber-500"
             />
             <select
               value={formP.categoria}
               onChange={(e) => setFormP((p) => ({ ...p, categoria: e.target.value }))}
-              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500"
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-100 outline-none focus:border-amber-500"
             >
               {CATEGORIAS.map((c) => <option key={c} value={c}>{c}</option>)}
             </select>
@@ -105,7 +105,7 @@ export default function ModalProducto({ formP, setFormP, editandoId, isPending, 
             <button
               type="submit"
               disabled={isPending}
-              className="flex-1 py-2 rounded-lg bg-gold-500 hover:bg-gold-600 disabled:opacity-40 text-zinc-950 text-sm font-semibold"
+              className="flex-1 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 disabled:opacity-40 text-zinc-950 text-sm font-semibold"
             >
               {isPending ? 'Guardando…' : editandoId ? 'Guardar cambios' : 'Crear'}
             </button>

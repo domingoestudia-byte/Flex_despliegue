@@ -80,7 +80,7 @@ export default function PaginaRegister() {
                 value={form.nombre}
                 onChange={set('nombre')}
                 required
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-amber-500 transition-colors"
               />
             </div>
             <div>
@@ -92,7 +92,7 @@ export default function PaginaRegister() {
                 value={form.email}
                 onChange={set('email')}
                 required
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-amber-500 transition-colors"
               />
             </div>
             <div>
@@ -104,7 +104,7 @@ export default function PaginaRegister() {
                 value={form.password}
                 onChange={set('password')}
                 required
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-amber-500 transition-colors"
               />
             </div>
             <div>
@@ -115,21 +115,21 @@ export default function PaginaRegister() {
                 value={form.confirmar}
                 onChange={set('confirmar')}
                 required
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
+                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-amber-500 transition-colors"
               />
             </div>
 
             <p className="text-zinc-600 text-xs pt-1">
               Al registrarte aceptas los{' '}
-              <a href="#" className="text-gold-500 hover:text-gold-400">Terminos y condiciones</a>
+              <a href="#" className="text-amber-500 hover:text-amber-400">Terminos y condiciones</a>
               {' '}y la{' '}
-              <a href="#" className="text-gold-500 hover:text-gold-400">Politica de privacidad</a>.
+              <a href="#" className="text-amber-500 hover:text-amber-400">Politica de privacidad</a>.
             </p>
 
             <button
               type="submit"
               disabled={cargando}
-              className="w-full py-3 bg-gold-500 hover:bg-gold-600 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl transition-colors"
+              className="w-full py-3 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 font-bold rounded-xl transition-colors"
             >
               {cargando ? 'Creando cuenta…' : 'Crear cuenta'}
             </button>
@@ -137,7 +137,7 @@ export default function PaginaRegister() {
 
           <p className="text-center text-zinc-500 text-sm mt-8">
             Ya tienes cuenta?{' '}
-            <Link href="/login" className="text-gold-400 hover:text-gold-300 font-medium">
+            <Link href="/login" className="text-amber-400 hover:text-amber-300 font-medium">
               Inicia sesion
             </Link>
           </p>

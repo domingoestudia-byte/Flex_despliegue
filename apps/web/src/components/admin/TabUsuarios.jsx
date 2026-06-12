@@ -78,7 +78,7 @@ export default function TabUsuarios({ perfiles }) {
 
                 <td className="px-4 py-3 text-right">
                   <div className="flex justify-end gap-3">
-                    <button onClick={() => handleEditar(p)} disabled={isPending} className="text-zinc-600 hover:text-gold-400 transition-colors"><Edit2 size={15} /></button>
+                    <button onClick={() => handleEditar(p)} disabled={isPending} className="text-zinc-600 hover:text-amber-400 transition-colors"><Edit2 size={15} /></button>
                     <button onClick={() => handleBorrar(p.id)} disabled={isPending} className="text-zinc-600 hover:text-red-400 transition-colors"><Trash2 size={15} /></button>
                   </div>
                 </td>
@@ -102,7 +102,7 @@ export default function TabUsuarios({ perfiles }) {
               </div>
             </div>
             <div className="flex gap-3 shrink-0">
-              <button onClick={() => handleEditar(p)} disabled={isPending} className="text-zinc-600 hover:text-gold-400 transition-colors"><Edit2 size={15} /></button>
+              <button onClick={() => handleEditar(p)} disabled={isPending} className="text-zinc-600 hover:text-amber-400 transition-colors"><Edit2 size={15} /></button>
               <button onClick={() => handleBorrar(p.id)} disabled={isPending} className="text-zinc-600 hover:text-red-400 transition-colors"><Trash2 size={15} /></button>
             </div>
           </div>
