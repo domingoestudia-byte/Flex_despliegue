@@ -1,12 +1,6 @@
 // Llama a /api/pagos y devuelve la URL de la página de pago de Stripe
 export async function crearCheckout({ tipo, id, items, user }) {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL
-  
-  if (!appUrl) {
-    throw new Error('Falta NEXT_PUBLIC_APP_URL')
-  }
-
-  const resp = await fetch(`${appUrl}/api/pagos`, {
+  const resp = await fetch('/api/pagos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
