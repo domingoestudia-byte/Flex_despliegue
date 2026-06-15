@@ -2,43 +2,39 @@
 
 export async function testSupabaseConnection() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  
+  console.log('=== URL DEBUG ===')
+  console.log('URL:', url)
+  console.log('Length:', url?.length)
+  console.log('Last 20 chars:', url?.slice(-20))
+  console.log('Char codes (last 10):', [...(url || '')].slice(-10).map(c => c.charCodeAt(0)))
+  
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  console.log('Key length:', key?.length)
   
-  console.log('=== TEST ENV ===')
-  console.log('URL raw:', url)
-  console.log('URL type:', typeof url)
-  console.log('URL length:', url?.length)
-  console.log('KEY raw first 20:', key?.substring(0, 20))
-  console.log('KEY type:', typeof key)
-  console.log('KEY length:', key?.length)
+  // Prueba con URL hardcodeada para descartar problema de entorno
+  const hardcodedUrl = 'https://zuzysqsiusjumcctcpzh.supabase.co'
   
-  // Verifica que la URL sea válida
   try {
-    const parsed = new URL(url)
-    console.log('URL parsed ok:', parsed.hostname)
-  } catch (e) {
-    console.error('URL parse failed:', e.message)
-    return { ok: false, error: 'URL invalida: ' + e.message, url }
-  }
-  
-  // Prueba fetch a Google primero (para saber si el problema es de red general)
-  try {
-    const googleRes = await fetch('https://www.google.com', { method: 'HEAD' })
-    console.log('Google fetch status:', googleRes.status)
-  } catch (e) {
-    console.error('Google fetch failed:', e.message)
-    return { ok: false, error: 'No hay conexion a internet: ' + e.message }
-  }
-  
-  // Prueba fetch a Supabase
-  try {
-    const response = await fetch(`${url}/rest/v1/`, {
+    const response = await fetch(`${hardcodedUrl}/rest/v1/`, {
       headers: { 'apikey': key },
     })
-    console.log('Supabase fetch status:', response.status)
-    return { ok: true, status: response.status }
+    console.log('Hardcoded fetch status:', response.status)
+    return { 
+      ok: true, 
+      status: response.status,
+      envUrl: url,
+      envUrlLength: url?.length,
+      hardcodedWorks: true
+    }
   } catch (err) {
-    console.error('Supabase fetch failed:', err.message)
-    return { ok: false, error: err.message, url: url?.substring(0, 30) }
+    console.error('Hardcoded fetch failed:', err.message)
+    return { 
+      ok: false, 
+      error: err.message,
+      envUrl: url,
+      envUrlLength: url?.length,
+      hardcodedWorks: false
+    }
   }
 }
