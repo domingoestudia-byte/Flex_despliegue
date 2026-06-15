@@ -1,5 +1,5 @@
 'use client'
-
+import { testSupabaseConnection } from '@/lib/actions/test'
 import { useState } from 'react'
 import Link from 'next/link'
 import FlexLogo from '@/components/layout/FlexLogo'
@@ -10,7 +10,11 @@ export default function PaginaRegister() {
   const [error, setError] = useState('')
   const [cargando, setCargando] = useState(false)
   const set = k => e => setForm(prev => ({ ...prev, [k]: e.target.value }))
-
+async function handleTest() {
+  const result = await testSupabaseConnection()
+  console.log('TEST RESULT:', result)
+  alert(JSON.stringify(result, null, 2))
+}
   async function handleSubmit(e) {
     e.preventDefault()
     setError('')
@@ -62,6 +66,13 @@ export default function PaginaRegister() {
           </div>
 
           <h1 className="text-2xl font-bold text-zinc-100 mb-1">Crea tu cuenta</h1>
+          {/* Añade esto justo debajo del <h1> "Crea tu cuenta" */}
+<button 
+  onClick={handleTest}
+  className="mb-4 px-3 py-1 bg-zinc-800 text-zinc-400 text-xs rounded hover:bg-zinc-700"
+>
+  Test Conexión Supabase
+</button>
           <p className="text-zinc-500 text-sm mb-8">Empieza a disfrutar de Flex esta noche</p>
 
           {error && (
